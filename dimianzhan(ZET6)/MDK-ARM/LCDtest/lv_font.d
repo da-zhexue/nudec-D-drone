@@ -1,0 +1,16 @@
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\lv_font.c
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\lv_font.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../lv_conf_internal.h
+lcdtest\lv_font.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../lv_conf_kconfig.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../../../lv_conf.h
+lcdtest\lv_font.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+lcdtest\lv_font.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\lv_symbol_def.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_area.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_utils.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_log.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_types.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_assert.h
+lcdtest\lv_font.o: ..\GUI\lvgl\src\font\../misc/lv_mem.h
+lcdtest\lv_font.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h

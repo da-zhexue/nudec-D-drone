@@ -1,0 +1,13 @@
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_tlsf.c
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\../lv_conf_internal.h
+lcdtest\lv_tlsf.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\../../../lv_conf.h
+lcdtest\lv_tlsf.o: D:\keil5\ARM\ARMCC\Bin\..\include\limits.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_tlsf.h
+lcdtest\lv_tlsf.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_mem.h
+lcdtest\lv_tlsf.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_types.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_log.h
+lcdtest\lv_tlsf.o: ..\GUI\lvgl\src\misc\lv_assert.h

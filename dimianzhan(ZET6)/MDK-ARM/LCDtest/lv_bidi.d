@@ -1,0 +1,17 @@
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_bidi.c
+lcdtest\lv_bidi.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_bidi.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../lv_conf_internal.h
+lcdtest\lv_bidi.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../../../lv_conf.h
+lcdtest\lv_bidi.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_txt.h
+lcdtest\lv_bidi.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdarg.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_area.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../font/lv_font.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../font/lv_symbol_def.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_printf.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\lv_types.h
+lcdtest\lv_bidi.o: ..\GUI\lvgl\src\misc\../misc/lv_mem.h
+lcdtest\lv_bidi.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h

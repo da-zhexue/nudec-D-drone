@@ -1,0 +1,11 @@
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\lv_ll.c
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\lv_ll.h
+lcdtest\lv_ll.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+lcdtest\lv_ll.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+lcdtest\lv_ll.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\lv_mem.h
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\../lv_conf_internal.h
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\../../../lv_conf.h
+lcdtest\lv_ll.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+lcdtest\lv_ll.o: ..\GUI\lvgl\src\misc\lv_types.h

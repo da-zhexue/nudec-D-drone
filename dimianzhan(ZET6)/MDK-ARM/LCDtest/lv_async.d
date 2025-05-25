@@ -1,0 +1,13 @@
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\lv_async.c
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\lv_async.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\lv_types.h
+lcdtest\lv_async.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\lv_mem.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\../lv_conf_internal.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\../lv_conf_kconfig.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\../../../lv_conf.h
+lcdtest\lv_async.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
+lcdtest\lv_async.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\lv_timer.h
+lcdtest\lv_async.o: ..\GUI\lvgl\src\misc\../hal/lv_hal_tick.h
+lcdtest\lv_async.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdbool.h

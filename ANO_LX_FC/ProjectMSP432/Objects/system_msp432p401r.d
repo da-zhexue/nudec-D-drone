@@ -1,0 +1,12 @@
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\system_msp432p401r.c
+.\objects\system_msp432p401r.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Drivers\ti/devices/msp432p4xx/inc/msp.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Drivers\ti/devices/msp432p4xx/inc/msp432p401r.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Drivers\ti/devices/msp432p4xx/inc/msp_compatibility.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Drivers\ti/devices/msp432p4xx/inc/msp432p401r_classic.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\Include\core_cm4.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\Include\cmsis_version.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\Include\cmsis_compiler.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\Include\cmsis_armcc.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Libraries\Include\mpu_armv7.h
+.\objects\system_msp432p401r.o: ..\DriversMcu\MSP432P401\Drivers\ti/devices/msp432p4xx/inc/system_msp432p401r.h
