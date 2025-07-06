@@ -23,7 +23,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+volatile int led_flag = 0;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,6 +60,8 @@ void esp_ap_init()
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);  //receive interrupt
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);  //idle interrupt
+	__HAL_UART_ENABLE_IT(&huart2, UART_IT_RXNE);  //receive interrupt
+	__HAL_UART_ENABLE_IT(&huart2, UART_IT_IDLE);  //idle interrupt
 	__HAL_UART_ENABLE_IT(&huart3, UART_IT_RXNE);  //receive interrupt
 	__HAL_UART_ENABLE_IT(&huart3, UART_IT_IDLE);  //idle interrupt
 	uint8_t at1[] = "AT+CWMODE=1\r\n";
@@ -119,6 +121,7 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_USART3_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 	esp_ap_init();
   /* USER CODE END 2 */
@@ -128,13 +131,20 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+//		if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1) == GPIO_PIN_SET)
+//			led_flag++;
+//		if(led_flag>=500)
+//		{
+//			led_flag=0;
+//			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
+//		}
 		if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_1) == GPIO_PIN_SET)
 		{
-				HAL_Delay(1000);
-				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
+			HAL_Delay(500);
+			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
 		}
-    /* USER CODE BEGIN 3 */
-
 //		HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1);
   }
   /* USER CODE END 3 */

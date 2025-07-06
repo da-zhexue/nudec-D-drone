@@ -12,7 +12,6 @@
 #include "gui_guider.h"
 #include "widgets_init.h"
 #include "usart.h"
-
 #if LV_USE_GUIDER_SIMULATOR && LV_USE_FREEMASTER
 #include "gg_external_data.h"
 #endif
@@ -88,14 +87,6 @@ void setup_ui(lv_ui *ui)
     lv_scr_load(ui->screen);
 }
 
-void init_keyboard(lv_ui *ui)
-{
-    ui->g_kb_top_layer = lv_keyboard_create(lv_layer_top());
-    lv_obj_add_event_cb(ui->g_kb_top_layer, kb_event_cb, LV_EVENT_ALL, NULL);
-    lv_obj_add_flag(ui->g_kb_top_layer, LV_OBJ_FLAG_HIDDEN);
-    lv_obj_set_style_text_font(ui->g_kb_top_layer, &lv_font_SourceHanSerifSC_Regular_18, LV_PART_MAIN|LV_STATE_DEFAULT);
-}
-
 void esp_ap_init()
 {
 	__HAL_UART_ENABLE_IT(&huart1, UART_IT_RXNE);  //receive interrupt
@@ -116,4 +107,9 @@ void esp_ap_init()
 	HAL_UART_Transmit(&huart3,at4,sizeof(at4),100);
 	HAL_Delay(1000);
 	HAL_UART_Transmit(&huart3,at5,sizeof(at5),100);
+}
+
+void init_keyboard(lv_ui *ui)
+{
+
 }

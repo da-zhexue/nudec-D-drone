@@ -20,7 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_it.h"
-#include <string.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -66,6 +65,7 @@ uint16_t search_for_size(uint8_t *input)
 
 /* External variables --------------------------------------------------------*/
 extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart2;
 extern UART_HandleTypeDef huart3;
 /* USER CODE BEGIN EV */
 
@@ -229,16 +229,43 @@ void USART1_IRQHandler(void)
 	else if(huart1.Instance->SR & UART_FLAG_IDLE)
 	{
 			receive = huart1.Instance->DR;
-			HAL_UART_Transmit(&huart3,pdata,sizeof(pdata),100);	
+			if(pdata[2] == '+' && pdata[3] == 'I' && pdata[9]<='D' && pdata[9]>='A' && pdata[10]<='9' && pdata[10]>='0')
+			{
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_SET);
+				uint8_t transform_data[5];
+				transform_data[0]=0x5B;
+				transform_data[1]=pdata[9];
+				transform_data[2]=pdata[10];
+				transform_data[3]=0x5D;
+				HAL_UART_Transmit(&huart2,transform_data,sizeof(transform_data),100);
+				int tt=0;
+					for(volatile int i=0;i<10000;i++)
+							tt++;
+			}
+			//HAL_UART_Transmit(&huart2,pdata,sizeof(pdata),100);
 			for(int i=0;i<=data_index;i++)
 				pdata[i]=0;
 			data_index=0;
 	}
   /* USER CODE END USART1_IRQn 0 */
-
+  //HAL_UART_IRQHandler(&huart1);
   /* USER CODE BEGIN USART1_IRQn 1 */
 
   /* USER CODE END USART1_IRQn 1 */
+}
+
+/**
+  * @brief This function handles USART2 global interrupt.
+  */
+void USART2_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART2_IRQn 0 */
+
+  /* USER CODE END USART2_IRQn 0 */
+  HAL_UART_IRQHandler(&huart2);
+  /* USER CODE BEGIN USART2_IRQn 1 */
+
+  /* USER CODE END USART2_IRQn 1 */
 }
 
 /**
@@ -278,7 +305,7 @@ void USART3_IRQHandler(void)
       //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_1, GPIO_PIN_RESET);
 	}
   /* USER CODE END USART3_IRQn 0 */
-	
+  HAL_UART_IRQHandler(&huart3);
   /* USER CODE BEGIN USART3_IRQn 1 */
 
   /* USER CODE END USART3_IRQn 1 */

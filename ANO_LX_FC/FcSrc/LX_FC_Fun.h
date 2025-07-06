@@ -21,6 +21,8 @@ u8 OneKey_Flip(void);
 u8 OneKey_Return_Home(void);
 u8 Horizontal_Calibrate(void);
 u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360);
+u8 Yaw_Right_Rotate(u16 angle_deg, u16 angular_velocity_degps);
+u8 Yaw_Left_Rotate(u16 angle_deg, u16 angular_velocity_degps);
 u8 Mag_Calibrate(void);
 u8 ACC_Calibrate(void);
 u8 GYR_Calibrate(void);

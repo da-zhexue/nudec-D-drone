@@ -175,7 +175,54 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 		return 0;
 	}
 }
-
+//yaw轴向右旋转(角度deg 0-359度，角速度degps 5-90度/s)
+u8 Yaw_Right_Rotate(u16 angle_deg, u16 angular_velocity_degps)
+{
+	//
+	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
+	{
+		//按协议发送指令
+		dt.cmd_send.CID = 0X10;
+		dt.cmd_send.CMD[0] = 0X02;
+		dt.cmd_send.CMD[1] = 0X08;
+		//
+		dt.cmd_send.CMD[2] = BYTE0(angle_deg);
+		dt.cmd_send.CMD[3] = BYTE1(angle_deg);
+		dt.cmd_send.CMD[4] = BYTE0(angular_velocity_degps);
+		dt.cmd_send.CMD[5] = BYTE1(angular_velocity_degps);
+		//
+		CMD_Send(0xff, &dt.cmd_send);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+//yaw轴向左旋转(角度deg 0-359度，角速度degps 5-90度/s)
+u8 Yaw_Left_Rotate(u16 angle_deg, u16 angular_velocity_degps)
+{
+	//
+	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
+	{
+		//按协议发送指令
+		dt.cmd_send.CID = 0X10;
+		dt.cmd_send.CMD[0] = 0X02;
+		dt.cmd_send.CMD[1] = 0X07;
+		//
+		dt.cmd_send.CMD[2] = BYTE0(angle_deg);
+		dt.cmd_send.CMD[3] = BYTE1(angle_deg);
+		dt.cmd_send.CMD[4] = BYTE0(angular_velocity_degps);
+		dt.cmd_send.CMD[5] = BYTE1(angular_velocity_degps);
+		//
+		CMD_Send(0xff, &dt.cmd_send);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 //水平校准
 u8 Horizontal_Calibrate()
 {

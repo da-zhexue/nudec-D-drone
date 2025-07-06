@@ -188,7 +188,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -1717,31 +1717,6 @@
               <FilePath>..\GUI_APP\generated\guider_customer_fonts\guider_customer_fonts.h</FilePath>
             </File>
             <File>
-              <FileName>lv_font_montserratMedium_11.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_11.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_font_montserratMedium_12.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_12.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_font_montserratMedium_16.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_16.c</FilePath>
-            </File>
-            <File>
-              <FileName>lv_font_SourceHanSerifSC_Regular_18.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_SourceHanSerifSC_Regular_18.c</FilePath>
-            </File>
-            <File>
-              <FileName>_field_alpha_204x149.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\images\_field_alpha_204x149.c</FilePath>
-            </File>
-            <File>
               <FileName>custom.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\GUI_APP\custom\custom.c</FilePath>
@@ -1752,9 +1727,19 @@
               <FilePath>..\GUI_APP\custom\custom.h</FilePath>
             </File>
             <File>
-              <FileName>lv_font_montserratMedium_23.c</FileName>
+              <FileName>lv_font_montserratMedium_20.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_23.c</FilePath>
+              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_20.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_font_montserratMedium_30.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_30.c</FilePath>
+            </File>
+            <File>
+              <FileName>lv_font_montserratMedium_16.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\GUI_APP\generated\guider_fonts\lv_font_montserratMedium_16.c</FilePath>
             </File>
           </Files>
         </Group>

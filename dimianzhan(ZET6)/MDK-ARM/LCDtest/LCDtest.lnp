@@ -212,14 +212,11 @@
 "lcdtest\setup_scr_screen.o"
 "lcdtest\setup_scr_screen_1.o"
 "lcdtest\widgets_init.o"
-"lcdtest\lv_font_montserratmedium_11.o"
-"lcdtest\lv_font_montserratmedium_12.o"
-"lcdtest\lv_font_montserratmedium_16.o"
-"lcdtest\lv_font_sourcehanserifsc_regular_18.o"
-"lcdtest\_field_alpha_204x149.o"
 "lcdtest\custom.o"
-"lcdtest\lv_font_montserratmedium_23.o"
---strict --scatter "LCDtest\LCDtest.sct"
+"lcdtest\lv_font_montserratmedium_20.o"
+"lcdtest\lv_font_montserratmedium_30.o"
+"lcdtest\lv_font_montserratmedium_16.o"
+--library_type=microlib --strict --scatter "LCDtest\LCDtest.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "LCDtest.map" -o LCDtest\LCDtest.axf

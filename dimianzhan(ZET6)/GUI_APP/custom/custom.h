@@ -18,8 +18,8 @@ extern "C" {
 void custom_init(lv_ui *ui);
 void slider_event_cb(int slider_val, lv_obj_t *table);
 void num_reset();
-void search_for_position(const char *input);
-void show_position(const char *input);
+void search_position(const char *input,int show_position);
+void send_position();
 void renovate_the_num(const char *num,lv_obj_t *table);
 #ifdef __cplusplus
 }

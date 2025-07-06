@@ -38,7 +38,7 @@ lv_ui  guider_ui;
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-
+int led_flag=0;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -128,6 +128,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		lv_task_handler();
+		if(HAL_GPIO_ReadPin(GPIOE,GPIO_PIN_5) == GPIO_PIN_RESET)
+			led_flag++;
+		if(led_flag>=2500)
+		{
+			led_flag=0;
+			HAL_GPIO_WritePin(GPIOE,GPIO_PIN_5,GPIO_PIN_SET);
+		}
   }
   /* USER CODE END 3 */
 }

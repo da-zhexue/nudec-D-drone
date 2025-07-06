@@ -126,14 +126,14 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 6:
 				{
-					//前进1米
-					mission_step += Horizontal_Move(100,150,0);
+					//右转180度
+					mission_step += Yaw_Right_Rotate(180,10);
 				}
 				break;	
 				case 7:
 				{
-					//等10秒
-					if(time_dly_cnt_ms<10000)
+					//等30秒
+					if(time_dly_cnt_ms<30000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
@@ -146,14 +146,14 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 8:
 				{
-					//右移1米
-					mission_step += Horizontal_Move(100,150,90);
+					//左转180度
+					mission_step += Yaw_Left_Rotate(180,10);
 				}
 				break;
 				case 9:
 				{
-					//等10秒
-					if(time_dly_cnt_ms<10000)
+					//等30秒
+					if(time_dly_cnt_ms<30000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
