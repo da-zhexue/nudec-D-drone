@@ -675,6 +675,21 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>my_task</GroupName>
+          <Files>
+            <File>
+              <FileName>uart_receive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FcSrc\uart_receive.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_receive.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\FcSrc\uart_receive.h</FilePath>
+            </File>
+          </Files>
+        </Group>
       </Groups>
     </Target>
   </Targets>

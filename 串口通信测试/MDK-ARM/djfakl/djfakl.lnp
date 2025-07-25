@@ -1,0 +1,25 @@
+--cpu Cortex-M3
+"djfakl\startup_stm32f103xb.o"
+"djfakl\main.o"
+"djfakl\gpio.o"
+"djfakl\usart.o"
+"djfakl\stm32f1xx_it.o"
+"djfakl\stm32f1xx_hal_msp.o"
+"djfakl\stm32f1xx_hal_gpio_ex.o"
+"djfakl\stm32f1xx_hal_uart.o"
+"djfakl\stm32f1xx_hal.o"
+"djfakl\stm32f1xx_hal_rcc.o"
+"djfakl\stm32f1xx_hal_rcc_ex.o"
+"djfakl\stm32f1xx_hal_gpio.o"
+"djfakl\stm32f1xx_hal_dma.o"
+"djfakl\stm32f1xx_hal_cortex.o"
+"djfakl\stm32f1xx_hal_pwr.o"
+"djfakl\stm32f1xx_hal_flash.o"
+"djfakl\stm32f1xx_hal_flash_ex.o"
+"djfakl\stm32f1xx_hal_exti.o"
+"djfakl\system_stm32f1xx.o"
+"djfakl\uart_receive.o"
+--library_type=microlib --strict --scatter "djfakl\djfakl.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "djfakl.map" -o djfakl\djfakl.axf

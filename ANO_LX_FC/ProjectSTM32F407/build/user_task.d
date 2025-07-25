@@ -32,3 +32,4 @@
 .\build\user_task.o: ..\FcSrc\ANO_LX.h
 .\build\user_task.o: ..\DriversMcu\STM32F407\Drivers\Drv_RcIn.h
 .\build\user_task.o: ..\FcSrc\LX_FC_Fun.h
+.\build\user_task.o: ..\FcSrc\uart_receive.h

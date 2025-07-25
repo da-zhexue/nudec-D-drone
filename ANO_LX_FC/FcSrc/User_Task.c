@@ -1,6 +1,7 @@
 #include "User_Task.h"
 #include "Drv_RcIn.h"
 #include "LX_FC_Fun.h"
+#include "uart_receive.h"
 
 void UserTask_OneKeyCmd(void)
 {
@@ -126,14 +127,14 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 6:
 				{
-					//右转180度
-					mission_step += Yaw_Right_Rotate(180,10);
+					//左移2米
+					mission_step += Horizontal_Move(200, 50, 270);
 				}
 				break;	
 				case 7:
 				{
-					//等30秒
-					if(time_dly_cnt_ms<30000)
+					//等10秒
+					if(time_dly_cnt_ms<10000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
@@ -146,14 +147,14 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 8:
 				{
-					//左转180度
-					mission_step += Yaw_Left_Rotate(180,10);
+					//前移3米
+					mission_step += Horizontal_Move(300, 50, 0);
 				}
 				break;
 				case 9:
 				{
-					//等30秒
-					if(time_dly_cnt_ms<30000)
+					//等10秒
+					if(time_dly_cnt_ms<10000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
@@ -166,28 +167,58 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 10:
 				{
-					//执行一键降落
-					OneKey_Land();					
+					sc16 move_x = (circle_data.x - 80)/2;
+					if(move_x >= 5)
+						mission_step += Horizontal_Move(move_x, 25, 90);
+					else if(move_x <= -5)
+						mission_step += Horizontal_Move(move_x*(-1), 25, 270);
+					else 
+						mission_step++;
 				}
 				break;	
 				case 11:
 				{
-					
+					//等3秒
+					if(time_dly_cnt_ms<3000)
+					{
+						time_dly_cnt_ms+=20;//ms
+					}
+					else
+					{
+						time_dly_cnt_ms = 0;
+						mission_step += 1;
+					}			
 				}
 				break;
 				case 12:
 				{
-				
+					sc16 move_y = (circle_data.y - 60)/2;
+					if(move_y >= 5)
+						mission_step += Horizontal_Move(move_y, 25, 180);
+					else if(move_y <= -5)
+						mission_step += Horizontal_Move(move_y*(-1), 25, 0);
+					else 
+						mission_step++;
 				}
 				break;
 				case 13:
 				{
-					
+					//等3秒
+					if(time_dly_cnt_ms<3000)
+					{
+						time_dly_cnt_ms+=20;//ms
+					}
+					else
+					{
+						time_dly_cnt_ms = 0;
+						mission_step += 1;
+					}			
 				}
 				break;
 				case 14:
 				{
-					
+					//执行一键降落
+					OneKey_Land();	
 				}
 				break;				
 				default:break;
