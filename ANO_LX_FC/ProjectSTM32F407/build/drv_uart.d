@@ -33,3 +33,4 @@
 .\build\drv_uart.o: ..\FcSrc\Ano_DT_LX.h
 .\build\drv_uart.o: ..\DriversBsp\Drv_UbloxGPS.h
 .\build\drv_uart.o: ..\DriversBsp\Drv_AnoOf.h
+.\build\drv_uart.o: ..\FcSrc\uart_receive.h
