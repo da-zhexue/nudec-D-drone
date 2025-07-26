@@ -1,8 +1,10 @@
 #include "uart_receive.h"
 #include "usart.h"
+
 CircleInfo circle_data = {.x = 80, .y = 60};
 PositionInfo position_data;
 SearchInfo search_data;
+LidarInfo lidar_data;
 
 void processUART3Data(uint8_t* data, uint8_t cmd);
 
@@ -51,11 +53,9 @@ void processUART3Data(uint8_t* data, uint8_t cmd)
 			case CMD_HEIGHT_GET:
 					position_data.h = (data[0] << 8) | data[1];
 					break;
-			case CMD_X_GET:
+			case CMD_XY_GET:
 					position_data.x = (data[0] << 8) | data[1];
-					break;
-			case CMD_Y_GET:
-					position_data.y = (data[0] << 8) | data[1];
+					position_data.y = (data[2] << 8) | data[3];
 					break;
 			case CMD_SEARCH:
 					search_data.character = data[0];
@@ -64,6 +64,14 @@ void processUART3Data(uint8_t* data, uint8_t cmd)
 			case CMD_LAND:
 					circle_data.x = data[0];
 					circle_data.y = data[1];
+					break;
+			case CMD_OBSTACLE_AVOID_1:
+					lidar_data.dis[0] = (data[0] << 8) | data[1];
+					lidar_data.dis[1] = (data[2] << 8) | data[3];
+					break;
+			case CMD_OBSTACLE_AVOID_2:
+					lidar_data.dis[2] = (data[0] << 8) | data[1];
+					lidar_data.dis[3] = (data[2] << 8) | data[3];
 					break;
 		}
 }

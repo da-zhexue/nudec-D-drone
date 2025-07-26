@@ -1,7 +1,7 @@
 Dependencies for Project 'djfakl', Target 'djfakl': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
 F (startup_stm32f103xb.s)(0x6882F865)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include--pd "__UVISION_VERSION SETA 529" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o djfakl\startup_stm32f103xb.o --depend djfakl\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x688324F3)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\bsp-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o djfakl\main.o --omf_browse djfakl\main.crf --depend djfakl\main.d)
+F (../Core/Src/main.c)(0x68844361)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\bsp-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o djfakl\main.o --omf_browse djfakl\main.crf --depend djfakl\main.d)
 I (../Core/Inc/main.h)(0x6882F862)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6866573D)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6882F862)
@@ -31,7 +31,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6866573D)
 I (../Core/Inc/usart.h)(0x6882F861)
 I (../Core/Inc/gpio.h)(0x6882F861)
 I (D:\keil5\ARM\ARMCC\include\stdio.h)(0x5D9AD21A)
-I (..\bsp\uart_receive.h)(0x6882F91B)
+I (..\bsp\uart_receive.h)(0x68844D22)
 F (../Core/Src/gpio.c)(0x6882F861)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\bsp-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o djfakl\gpio.o --omf_browse djfakl\gpio.crf --depend djfakl\gpio.d)
 I (../Core/Inc/gpio.h)(0x6882F861)
 I (../Core/Inc/main.h)(0x6882F862)
@@ -481,8 +481,8 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x6866573D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x6866573D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6866573D)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6866573D)
-F (..\bsp\uart_receive.c)(0x68831D64)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\bsp-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o djfakl\uart_receive.o --omf_browse djfakl\uart_receive.crf --depend djfakl\uart_receive.d)
-I (..\bsp\uart_receive.h)(0x6882F91B)
+F (..\bsp\uart_receive.c)(0x688442FA)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\bsp-I.\RTE\_djfakl-IE:\keil\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\keil\Keil\STM32F1xx_DFP\2.3.0\Device\Include-D__UVISION_VERSION="529" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o djfakl\uart_receive.o --omf_browse djfakl\uart_receive.crf --depend djfakl\uart_receive.d)
+I (..\bsp\uart_receive.h)(0x68844D22)
 I (../Core/Inc/main.h)(0x6882F862)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6866573D)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x6882F862)

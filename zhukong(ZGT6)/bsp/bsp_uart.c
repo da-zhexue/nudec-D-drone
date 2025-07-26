@@ -7,7 +7,10 @@ uint8_t drone_data[128];
 uint8_t openmv_data[128];
 int data_index=0;
 int entryCount=0;
+uint8_t uart6_rx_con=0;
+uint8_t uart6_rx_buf[128];
 char storage[32][8];
+
 uint8_t at1[] = "AT+CIPSEND=3\r\n";
 uint8_t at2[] = "AT+CIPSEND=4\r\n";
 uint16_t search_for_size(uint8_t *input) 
@@ -19,13 +22,46 @@ void send_height(uint16_t height)
 		uint8_t send_data[8];
     send_data[0] = 0xAA; // 帧头1
 		send_data[1] = 0x55; // 帧头2
-		send_data[2] = 0x01; // 指令位 0x01:高度 0x02:X(float) 0x03:Y(float) 0x04:货物位置 (如果x、y为uint16_t则0x02同时发送x、y)
+		send_data[2] = 0x01; // 指令位 0x01:高度 0x02:X、Y  0x04:货物位置 (如果x、y为uint16_t则0x02同时发送x、y) 0x05:openmv辅助降落信息 
     send_data[3] = (height >> 8) & 0xff; // 数据位1
     send_data[4] = height & 0xff; // 数据位2
 		send_data[5] = 0x00; // 数据位3
 		send_data[6] = 0x00; // 数据位4
     send_data[7] = 0x5D; // 帧尾
     HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
+}
+void send_xy(int16_t x, int16_t y)
+{
+		uint8_t send_data[8];
+    send_data[0] = 0xAA; // 帧头1
+		send_data[1] = 0x55; // 帧头2
+		send_data[2] = 0x02; // 指令位 0x01:高度 0x02:X、Y  0x04:货物位置 (如果x、y为uint16_t则0x02同时发送x、y) 0x05:openmv辅助降落信息 
+    send_data[3] = (x >> 8) & 0xff; // 数据位1
+    send_data[4] = x & 0xff; // 数据位2
+		send_data[5] = (y >> 8) & 0xff; // 数据位3
+		send_data[6] = y & 0xff; // 数据位4
+    send_data[7] = 0x5D; // 帧尾
+    HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
+}
+void send_lidar_data(LidarDataTypeDef *data)
+{
+		uint8_t send_data[8];
+    send_data[0] = 0xAA; // 帧头1
+		send_data[1] = 0x55; // 帧头2
+		send_data[2] = 0x06; // 指令位 0x06:雷达避障信息(0°和90°) 0x07:雷达避障信息(180°和270°)
+    send_data[3] = (data[0].distance >> 8) & 0xff; // 数据位1
+    send_data[4] = data[0].distance & 0xff; // 数据位2
+		send_data[5] = (data[1].distance >> 8) & 0xff; // 数据位3
+		send_data[6] = data[1].distance & 0xff; // 数据位4
+    send_data[7] = 0x5D; // 帧尾
+    HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
+	
+		send_data[2] = 0x07; 
+    send_data[3] = (data[2].distance >> 8) & 0xff; // 数据位1
+    send_data[4] = data[2].distance & 0xff; // 数据位2
+		send_data[5] = (data[3].distance >> 8) & 0xff; // 数据位3
+		send_data[6] = data[3].distance & 0xff; // 数据位4
+		HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
 }
 // ESP8266  TX:A9 RX:A10   
 void USART1_IRQHandler(void)
@@ -122,11 +158,77 @@ void USART3_IRQHandler(void)
 	}
 }
 
-// uart6�ж���ax_laser.c��, �������ݮ������������, ���Ǹ��ļ�����ж�ע�͵�
-// Raspberry Pi or Laser  TX:C6 RX:C7
-//void USART6_IRQHandler(void)
-//{
-
-//  HAL_UART_IRQHandler(&huart6);
-
-//}
+void USART6_IRQHandler(void)
+{
+  /* USER CODE BEGIN USART3_IRQn 0 */
+	volatile uint8_t Res;
+	LidarDataTypeDef lidardata[4];
+	if(huart6.Instance->SR & UART_FLAG_RXNE)
+	{
+			Res = huart6.Instance->DR;
+			
+			if (uart6_rx_con < 2)
+			{
+				//接收帧头
+				if(uart6_rx_con == 0)  
+				{
+					//判断帧头1 AA
+					if(Res == LD_HEADER1)
+					{
+						uart6_rx_buf[uart6_rx_con] = Res;
+						uart6_rx_con = 1;					
+					}
+				}
+				else
+				{
+					//判断帧头2 55
+					if(Res == LD_HEADER2 || Res == LD_HEADER3)
+					{
+						uart6_rx_buf[uart6_rx_con] = Res;
+						uart6_rx_con = 2;					
+					}
+					else uart6_rx_con = 0;
+						
+				}
+			}
+			else  //接收数据
+			{
+				//判断是否接收完
+				if(uart6_rx_con < LD_F_LEN1)
+				{
+					uart6_rx_buf[uart6_rx_con] = Res;
+					uart6_rx_con++;
+				}
+				else
+				{
+					if(uart6_rx_buf[1] == LD_HEADER2)
+					{
+						for (int i = 0; i < 4; i++) {
+							uint16_t high_byte = uart6_rx_buf[2 + i*2];
+							uint16_t low_byte  = uart6_rx_buf[3 + i*2];
+							lidardata[i].distance = (high_byte << 8) | low_byte;
+							lidardata[i].angle = i * 90;
+						}
+						send_lidar_data(lidardata);
+					}
+					else if(uart6_rx_buf[1] == LD_HEADER3)
+					{
+						int16_t lidar_x = (uart6_rx_buf[2] << 8) | uart6_rx_buf[3];
+						int16_t lidar_y = (uart6_rx_buf[4] << 8) | uart6_rx_buf[5];
+						send_xy(lidar_x, lidar_y);
+					}
+					for(int i=0; i<LD_F_LEN1; i++)
+					{	
+						uart6_rx_buf[i] = 0;
+					}
+					//复位
+					uart6_rx_con = 0;
+				}
+			}
+			
+	}
+	else if(huart6.Instance->SR & UART_FLAG_IDLE)
+	{
+			Res = huart6.Instance->DR;
+	}
+}

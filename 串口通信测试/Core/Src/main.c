@@ -122,6 +122,7 @@ int main(void)
 		if(move_y <= 5 && move_y >= -5) move_y = 0;
 		printf("move_x: %d  move_y: %d\n", move_x, move_y);
 		printf("x: %d  y: %d  h: %d\n", position_data.x, position_data.y, position_data.h);
+		printf("angle 0: %d  90: %d  180: %d  270: %d\n", lidar_data.dis[0], lidar_data.dis[1], lidar_data.dis[2], lidar_data.dis[3]);
 		printf("\n\n\n");
 		HAL_Delay(500);
     /* USER CODE END WHILE */
