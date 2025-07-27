@@ -175,6 +175,75 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 		return 0;
 	}
 }
+//目标对地高度
+u8 Target_Height(s32 height_cm)
+{
+	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
+	{
+		//按协议发送指令
+		dt.cmd_send.CID = 0X10;
+		dt.cmd_send.CMD[0] = 0X01;
+		dt.cmd_send.CMD[1] = 0X02;
+		//
+		dt.cmd_send.CMD[2] = BYTE0(height_cm);
+		dt.cmd_send.CMD[3] = BYTE1(height_cm);
+		dt.cmd_send.CMD[4] = BYTE2(height_cm);
+		dt.cmd_send.CMD[5] = BYTE3(height_cm);
+		//
+		CMD_Send(0xff, &dt.cmd_send);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+//上升高度
+u8 Up_Height(u16 height_cm, u16 velocity_cmps)
+{
+	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
+	{
+		//按协议发送指令
+		dt.cmd_send.CID = 0X10;
+		dt.cmd_send.CMD[0] = 0X02;
+		dt.cmd_send.CMD[1] = 0X01;
+		//
+		dt.cmd_send.CMD[2] = BYTE0(height_cm);
+		dt.cmd_send.CMD[3] = BYTE1(height_cm);
+		dt.cmd_send.CMD[4] = BYTE0(velocity_cmps);
+		dt.cmd_send.CMD[5] = BYTE1(velocity_cmps);
+		//
+		CMD_Send(0xff, &dt.cmd_send);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+//下降高度
+u8 Down_Height(u16 height_cm, u16 velocity_cmps)
+{
+	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
+	{
+		//按协议发送指令
+		dt.cmd_send.CID = 0X10;
+		dt.cmd_send.CMD[0] = 0X02;
+		dt.cmd_send.CMD[1] = 0X02;
+		//
+		dt.cmd_send.CMD[2] = BYTE0(height_cm);
+		dt.cmd_send.CMD[3] = BYTE1(height_cm);
+		dt.cmd_send.CMD[4] = BYTE0(velocity_cmps);
+		dt.cmd_send.CMD[5] = BYTE1(velocity_cmps);
+		//
+		CMD_Send(0xff, &dt.cmd_send);
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
 //yaw轴向右旋转(角度deg 0-359度，角速度degps 5-90度/s)
 u8 Yaw_Right_Rotate(u16 angle_deg, u16 angular_velocity_degps)
 {
