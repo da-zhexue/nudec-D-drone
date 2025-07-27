@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 "zgt6test\startup_stm32f407xx.o"
 "zgt6test\main.o"
 "zgt6test\gpio.o"

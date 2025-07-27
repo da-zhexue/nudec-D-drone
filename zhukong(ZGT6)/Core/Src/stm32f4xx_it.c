@@ -244,9 +244,9 @@ void SysTick_Handler(void)
 //  /* USER CODE END USART3_IRQn 1 */
 //}
 
-///**
-//  * @brief This function handles UART4 global interrupt.
-//  */
+/**
+  * @brief This function handles UART4 global interrupt.
+  */
 void UART4_IRQHandler(void)
 {
   /* USER CODE BEGIN UART4_IRQn 0 */
