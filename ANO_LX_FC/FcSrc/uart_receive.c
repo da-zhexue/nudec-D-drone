@@ -1,5 +1,5 @@
 #include "uart_receive.h"
-
+#include "Drv_Uart.h"
 CircleInfo circle_data = {.x = 80, .y = 60};
 PositionInfo position_data;
 SearchInfo search_data;
@@ -73,4 +73,15 @@ void processUART3Data(u8* data, u8 cmd)
 					lidar_data.dis[3] = (data[2] << 8) | data[3];
 					break;
 		}
+}
+
+void pwm_turn(u8 cmd) // cmd=0x01->yaw    0x02->pitch 
+{
+		u8 uart2_send_data[4];
+		uart2_send_data[0] = 0xAA;
+		uart2_send_data[1] = 0x55;
+		uart2_send_data[2] = cmd;
+		uart2_send_data[3] = 0x5D;
+		
+		DrvUart2SendBuf(uart2_send_data, sizeof(uart2_send_data));
 }
