@@ -153,6 +153,7 @@ Section Cross References
     stm32f4xx_usart.o(.text) refers to stm32f4xx_rcc.o(.text) for RCC_APB2PeriphResetCmd
     stm32f4xx_usart.o(.text) refers to stm32f4xx_usart.o(.conststring) for .conststring
     uart_receive.o(.text) refers to drv_uart.o(.text) for DrvUart2SendBuf
+    uart_receive.o(.text) refers to lx_fc_fun.o(.text) for Horizontal_Move
     uart_receive.o(.text) refers to uart_receive.o(.data) for position_data
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
@@ -238,22 +239,22 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
@@ -400,32 +401,32 @@ Image Symbol Table
     TI1_Config                               0x0800a0d9   Thumb Code    58  stm32f4xx_tim.o(.text)
     .text                                    0x0800b3d4   Section        0  stm32f4xx_usart.o(.text)
     .text                                    0x0800c1f8   Section        0  uart_receive.o(.text)
-    .text                                    0x0800c344   Section        0  dadd.o(.text)
-    .text                                    0x0800c492   Section        0  dmul.o(.text)
-    .text                                    0x0800c576   Section        0  dflti.o(.text)
-    .text                                    0x0800c598   Section       48  cdcmple.o(.text)
-    .text                                    0x0800c5c8   Section       48  cdrcmple.o(.text)
-    .text                                    0x0800c5f8   Section        0  d2f.o(.text)
-    .text                                    0x0800c630   Section        0  llshl.o(.text)
-    .text                                    0x0800c64e   Section        0  llsshr.o(.text)
-    .text                                    0x0800c672   Section        0  iusefp.o(.text)
-    .text                                    0x0800c672   Section        0  fepilogue.o(.text)
-    .text                                    0x0800c6e0   Section        0  depilogue.o(.text)
-    .text                                    0x0800c79c   Section       36  init.o(.text)
-    .text                                    0x0800c7c0   Section        0  llushr.o(.text)
-    .text                                    0x0800c7e0   Section        0  __dczerorl2.o(.text)
-    i.__scatterload_copy                     0x0800c836   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0800c844   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x0800c846   Section       14  handlers.o(i.__scatterload_zeroinit)
-    .constdata                               0x0800c854   Section     1028  ano_math.o(.constdata)
-    .conststring                             0x0800cc58   Section       72  misc.o(.conststring)
-    .conststring                             0x0800cca0   Section       81  stm32f4xx_adc.o(.conststring)
-    .conststring                             0x0800ccf4   Section       81  stm32f4xx_dma.o(.conststring)
-    .conststring                             0x0800cd48   Section       82  stm32f4xx_exti.o(.conststring)
-    .conststring                             0x0800cd9c   Section       82  stm32f4xx_gpio.o(.conststring)
-    .conststring                             0x0800cdf0   Section       81  stm32f4xx_rcc.o(.conststring)
-    .conststring                             0x0800ce44   Section       81  stm32f4xx_tim.o(.conststring)
-    .conststring                             0x0800ce98   Section       83  stm32f4xx_usart.o(.conststring)
+    .text                                    0x0800c444   Section        0  dadd.o(.text)
+    .text                                    0x0800c592   Section        0  dmul.o(.text)
+    .text                                    0x0800c676   Section        0  dflti.o(.text)
+    .text                                    0x0800c698   Section       48  cdcmple.o(.text)
+    .text                                    0x0800c6c8   Section       48  cdrcmple.o(.text)
+    .text                                    0x0800c6f8   Section        0  d2f.o(.text)
+    .text                                    0x0800c730   Section        0  llshl.o(.text)
+    .text                                    0x0800c74e   Section        0  llsshr.o(.text)
+    .text                                    0x0800c772   Section        0  iusefp.o(.text)
+    .text                                    0x0800c772   Section        0  fepilogue.o(.text)
+    .text                                    0x0800c7e0   Section        0  depilogue.o(.text)
+    .text                                    0x0800c89c   Section       36  init.o(.text)
+    .text                                    0x0800c8c0   Section        0  llushr.o(.text)
+    .text                                    0x0800c8e0   Section        0  __dczerorl2.o(.text)
+    i.__scatterload_copy                     0x0800c936   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800c944   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x0800c946   Section       14  handlers.o(i.__scatterload_zeroinit)
+    .constdata                               0x0800c954   Section     1028  ano_math.o(.constdata)
+    .conststring                             0x0800cd58   Section       72  misc.o(.conststring)
+    .conststring                             0x0800cda0   Section       81  stm32f4xx_adc.o(.conststring)
+    .conststring                             0x0800cdf4   Section       81  stm32f4xx_dma.o(.conststring)
+    .conststring                             0x0800ce48   Section       82  stm32f4xx_exti.o(.conststring)
+    .conststring                             0x0800ce9c   Section       82  stm32f4xx_gpio.o(.conststring)
+    .conststring                             0x0800cef0   Section       81  stm32f4xx_rcc.o(.conststring)
+    .conststring                             0x0800cf44   Section       81  stm32f4xx_tim.o(.conststring)
+    .conststring                             0x0800cf98   Section       83  stm32f4xx_usart.o(.conststring)
     .data                                    0x20000000   Section       84  ano_scheduler.o(.data)
     sched_tasks                              0x20000000   Data          84  ano_scheduler.o(.data)
     .data                                    0x20000054   Section        6  user_task.o(.data)
@@ -487,26 +488,28 @@ Image Symbol Table
     .data                                    0x20000184   Section       20  system_stm32f4xx.o(.data)
     .data                                    0x20000198   Section       16  stm32f4xx_rcc.o(.data)
     APBAHBPrescTable                         0x20000198   Data          16  stm32f4xx_rcc.o(.data)
-    .data                                    0x200001a8   Section       32  uart_receive.o(.data)
+    .data                                    0x200001a8   Section       35  uart_receive.o(.data)
     parse_state                              0x200001c0   Data           1  uart_receive.o(.data)
     cmd_type                                 0x200001c1   Data           1  uart_receive.o(.data)
     data_index                               0x200001c2   Data           1  uart_receive.o(.data)
     temp_buffer                              0x200001c3   Data           5  uart_receive.o(.data)
-    .bss                                     0x200001c8   Section     1872  ano_dt_lx.o(.bss)
-    DT_RxBuffer                              0x20000818   Data         256  ano_dt_lx.o(.bss)
-    .bss                                     0x20000918   Section       56  ano_lx.o(.bss)
-    pwm                                      0x20000940   Data          16  ano_lx.o(.bss)
-    .bss                                     0x20000950   Section       48  lx_fc_ext_sensor.o(.bss)
-    .bss                                     0x20000980   Section       11  lx_fc_state.o(.bss)
-    .bss                                     0x2000098c   Section      107  drv_bsp.o(.bss)
-    datatmp                                  0x200009de   Data          25  drv_bsp.o(.bss)
-    .bss                                     0x200009f8   Section      124  drv_anoof.o(.bss)
-    _datatemp                                0x20000a34   Data          50  drv_anoof.o(.bss)
-    check_time_ms                            0x20000a68   Data          12  drv_anoof.o(.bss)
-    .bss                                     0x20000a74   Section      100  drv_ubloxgps.o(.bss)
-    .bss                                     0x20000ad8   Section      100  drv_adc.o(.bss)
-    .bss                                     0x20000b3c   Section     1780  drv_uart.o(.bss)
-    STACK                                    0x20001230   Section     2048  startup_stm32f4xx.o(STACK)
+    dly_cnt                                  0x200001c8   Data           2  uart_receive.o(.data)
+    compensate_step                          0x200001ca   Data           1  uart_receive.o(.data)
+    .bss                                     0x200001cc   Section     1872  ano_dt_lx.o(.bss)
+    DT_RxBuffer                              0x2000081c   Data         256  ano_dt_lx.o(.bss)
+    .bss                                     0x2000091c   Section       56  ano_lx.o(.bss)
+    pwm                                      0x20000944   Data          16  ano_lx.o(.bss)
+    .bss                                     0x20000954   Section       48  lx_fc_ext_sensor.o(.bss)
+    .bss                                     0x20000984   Section       11  lx_fc_state.o(.bss)
+    .bss                                     0x20000990   Section      107  drv_bsp.o(.bss)
+    datatmp                                  0x200009e2   Data          25  drv_bsp.o(.bss)
+    .bss                                     0x200009fc   Section      124  drv_anoof.o(.bss)
+    _datatemp                                0x20000a38   Data          50  drv_anoof.o(.bss)
+    check_time_ms                            0x20000a6c   Data          12  drv_anoof.o(.bss)
+    .bss                                     0x20000a78   Section      100  drv_ubloxgps.o(.bss)
+    .bss                                     0x20000adc   Section      100  drv_adc.o(.bss)
+    .bss                                     0x20000b40   Section     1780  drv_uart.o(.bss)
+    STACK                                    0x20001238   Section     2048  startup_stm32f4xx.o(STACK)
 
     Global Symbols
 
@@ -981,36 +984,38 @@ Image Symbol Table
     processUART3Data                         0x0800c1f9   Thumb Code   140  uart_receive.o(.text)
     UART3_DataParser                         0x0800c285   Thumb Code   124  uart_receive.o(.text)
     pwm_turn                                 0x0800c301   Thumb Code    36  uart_receive.o(.text)
-    __aeabi_dadd                             0x0800c345   Thumb Code   322  dadd.o(.text)
-    __aeabi_dsub                             0x0800c487   Thumb Code     6  dadd.o(.text)
-    __aeabi_drsub                            0x0800c48d   Thumb Code     6  dadd.o(.text)
-    __aeabi_dmul                             0x0800c493   Thumb Code   228  dmul.o(.text)
-    __aeabi_i2d                              0x0800c577   Thumb Code    34  dflti.o(.text)
-    __aeabi_cdcmpeq                          0x0800c599   Thumb Code     0  cdcmple.o(.text)
-    __aeabi_cdcmple                          0x0800c599   Thumb Code    48  cdcmple.o(.text)
-    __aeabi_cdrcmple                         0x0800c5c9   Thumb Code    48  cdrcmple.o(.text)
-    __aeabi_d2f                              0x0800c5f9   Thumb Code    56  d2f.o(.text)
-    __aeabi_llsl                             0x0800c631   Thumb Code    30  llshl.o(.text)
-    _ll_shift_l                              0x0800c631   Thumb Code     0  llshl.o(.text)
-    __aeabi_lasr                             0x0800c64f   Thumb Code    36  llsshr.o(.text)
-    _ll_sshift_r                             0x0800c64f   Thumb Code     0  llsshr.o(.text)
-    __I$use$fp                               0x0800c673   Thumb Code     0  iusefp.o(.text)
-    _float_round                             0x0800c673   Thumb Code    18  fepilogue.o(.text)
-    _float_epilogue                          0x0800c685   Thumb Code    92  fepilogue.o(.text)
-    _double_round                            0x0800c6e1   Thumb Code    30  depilogue.o(.text)
-    _double_epilogue                         0x0800c6ff   Thumb Code   156  depilogue.o(.text)
-    __scatterload                            0x0800c79d   Thumb Code    28  init.o(.text)
-    __scatterload_rt2                        0x0800c79d   Thumb Code     0  init.o(.text)
-    __aeabi_llsr                             0x0800c7c1   Thumb Code    32  llushr.o(.text)
-    _ll_ushift_r                             0x0800c7c1   Thumb Code     0  llushr.o(.text)
-    __decompress                             0x0800c7e1   Thumb Code     0  __dczerorl2.o(.text)
-    __decompress1                            0x0800c7e1   Thumb Code    86  __dczerorl2.o(.text)
-    __scatterload_copy                       0x0800c837   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0800c845   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x0800c847   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    fast_atan_table                          0x0800c854   Data        1028  ano_math.o(.constdata)
-    Region$$Table$$Base                      0x0800ceec   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x0800cf0c   Number         0  anon$$obj.o(Region$$Table)
+    time_dly_cnt                             0x0800c325   Thumb Code    30  uart_receive.o(.text)
+    XY_Compensate                            0x0800c343   Thumb Code   218  uart_receive.o(.text)
+    __aeabi_dadd                             0x0800c445   Thumb Code   322  dadd.o(.text)
+    __aeabi_dsub                             0x0800c587   Thumb Code     6  dadd.o(.text)
+    __aeabi_drsub                            0x0800c58d   Thumb Code     6  dadd.o(.text)
+    __aeabi_dmul                             0x0800c593   Thumb Code   228  dmul.o(.text)
+    __aeabi_i2d                              0x0800c677   Thumb Code    34  dflti.o(.text)
+    __aeabi_cdcmpeq                          0x0800c699   Thumb Code     0  cdcmple.o(.text)
+    __aeabi_cdcmple                          0x0800c699   Thumb Code    48  cdcmple.o(.text)
+    __aeabi_cdrcmple                         0x0800c6c9   Thumb Code    48  cdrcmple.o(.text)
+    __aeabi_d2f                              0x0800c6f9   Thumb Code    56  d2f.o(.text)
+    __aeabi_llsl                             0x0800c731   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x0800c731   Thumb Code     0  llshl.o(.text)
+    __aeabi_lasr                             0x0800c74f   Thumb Code    36  llsshr.o(.text)
+    _ll_sshift_r                             0x0800c74f   Thumb Code     0  llsshr.o(.text)
+    __I$use$fp                               0x0800c773   Thumb Code     0  iusefp.o(.text)
+    _float_round                             0x0800c773   Thumb Code    18  fepilogue.o(.text)
+    _float_epilogue                          0x0800c785   Thumb Code    92  fepilogue.o(.text)
+    _double_round                            0x0800c7e1   Thumb Code    30  depilogue.o(.text)
+    _double_epilogue                         0x0800c7ff   Thumb Code   156  depilogue.o(.text)
+    __scatterload                            0x0800c89d   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x0800c89d   Thumb Code     0  init.o(.text)
+    __aeabi_llsr                             0x0800c8c1   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x0800c8c1   Thumb Code     0  llushr.o(.text)
+    __decompress                             0x0800c8e1   Thumb Code     0  __dczerorl2.o(.text)
+    __decompress1                            0x0800c8e1   Thumb Code    86  __dczerorl2.o(.text)
+    __scatterload_copy                       0x0800c937   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800c945   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x0800c947   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    fast_atan_table                          0x0800c954   Data        1028  ano_math.o(.constdata)
+    Region$$Table$$Base                      0x0800cfec   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0800d00c   Number         0  anon$$obj.o(Region$$Table)
     fc_bat                                   0x20000060   Data           4  ano_lx.o(.data)
     fc_att                                   0x20000064   Data           7  ano_lx.o(.data)
     fc_vel                                   0x2000006b   Data           6  ano_lx.o(.data)
@@ -1056,28 +1061,28 @@ Image Symbol Table
     position_data                            0x200001b0   Data           6  uart_receive.o(.data)
     search_data                              0x200001b6   Data           2  uart_receive.o(.data)
     lidar_data                               0x200001b8   Data           8  uart_receive.o(.data)
-    send_buffer                              0x200001c8   Data          50  ano_dt_lx.o(.bss)
-    dt                                       0x200001fc   Data        1564  ano_dt_lx.o(.bss)
-    rt_tar                                   0x20000918   Data          14  ano_lx.o(.bss)
-    pwm_to_esc                               0x20000926   Data          16  ano_lx.o(.bss)
-    fc_att_qua                               0x20000936   Data           9  ano_lx.o(.bss)
-    ext_sens                                 0x20000950   Data          48  lx_fc_ext_sensor.o(.bss)
-    fc_sta                                   0x20000980   Data          11  lx_fc_state.o(.bss)
-    rc_in                                    0x2000098c   Data          82  drv_bsp.o(.bss)
-    ano_of                                   0x200009f8   Data          60  drv_anoof.o(.bss)
-    ubx                                      0x20000a74   Data         100  drv_ubloxgps.o(.bss)
-    AdcValue                                 0x20000ad8   Data         100  drv_adc.o(.bss)
-    Tx1Buffer                                0x20000b3c   Data         256  drv_uart.o(.bss)
-    U1RxDataTmp                              0x20000c3c   Data         100  drv_uart.o(.bss)
-    TxBuffer                                 0x20000ca0   Data         256  drv_uart.o(.bss)
-    U2RxDataTmp                              0x20000da0   Data         100  drv_uart.o(.bss)
-    Tx3Buffer                                0x20000e04   Data         256  drv_uart.o(.bss)
-    U3RxDataTmp                              0x20000f04   Data         100  drv_uart.o(.bss)
-    Tx4Buffer                                0x20000f68   Data         256  drv_uart.o(.bss)
-    U4RxDataTmp                              0x20001068   Data         100  drv_uart.o(.bss)
-    Tx5Buffer                                0x200010cc   Data         256  drv_uart.o(.bss)
-    U5RxDataTmp                              0x200011cc   Data         100  drv_uart.o(.bss)
-    __initial_sp                             0x20001a30   Data           0  startup_stm32f4xx.o(STACK)
+    send_buffer                              0x200001cc   Data          50  ano_dt_lx.o(.bss)
+    dt                                       0x20000200   Data        1564  ano_dt_lx.o(.bss)
+    rt_tar                                   0x2000091c   Data          14  ano_lx.o(.bss)
+    pwm_to_esc                               0x2000092a   Data          16  ano_lx.o(.bss)
+    fc_att_qua                               0x2000093a   Data           9  ano_lx.o(.bss)
+    ext_sens                                 0x20000954   Data          48  lx_fc_ext_sensor.o(.bss)
+    fc_sta                                   0x20000984   Data          11  lx_fc_state.o(.bss)
+    rc_in                                    0x20000990   Data          82  drv_bsp.o(.bss)
+    ano_of                                   0x200009fc   Data          60  drv_anoof.o(.bss)
+    ubx                                      0x20000a78   Data         100  drv_ubloxgps.o(.bss)
+    AdcValue                                 0x20000adc   Data         100  drv_adc.o(.bss)
+    Tx1Buffer                                0x20000b40   Data         256  drv_uart.o(.bss)
+    U1RxDataTmp                              0x20000c40   Data         100  drv_uart.o(.bss)
+    TxBuffer                                 0x20000ca4   Data         256  drv_uart.o(.bss)
+    U2RxDataTmp                              0x20000da4   Data         100  drv_uart.o(.bss)
+    Tx3Buffer                                0x20000e08   Data         256  drv_uart.o(.bss)
+    U3RxDataTmp                              0x20000f08   Data         100  drv_uart.o(.bss)
+    Tx4Buffer                                0x20000f6c   Data         256  drv_uart.o(.bss)
+    U4RxDataTmp                              0x2000106c   Data         100  drv_uart.o(.bss)
+    Tx5Buffer                                0x200010d0   Data         256  drv_uart.o(.bss)
+    U5RxDataTmp                              0x200011d0   Data         100  drv_uart.o(.bss)
+    __initial_sp                             0x20001a38   Data           0  startup_stm32f4xx.o(STACK)
 
 
 
@@ -1087,9 +1092,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000d0d4, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x0000cfbc])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000d1d8, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x0000d0bc])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000cf0c, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x0000d00c, Max: 0x00080000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1133,45 +1138,45 @@ Memory Map of the image
     0x080074ec   0x080074ec   0x00000cfc   Code   RO          696    .text               stm32f4xx_rcc.o
     0x080081e8   0x080081e8   0x000031ec   Code   RO          732    .text               stm32f4xx_tim.o
     0x0800b3d4   0x0800b3d4   0x00000e24   Code   RO          749    .text               stm32f4xx_usart.o
-    0x0800c1f8   0x0800c1f8   0x0000014c   Code   RO          766    .text               uart_receive.o
-    0x0800c344   0x0800c344   0x0000014e   Code   RO          790    .text               mf_w.l(dadd.o)
-    0x0800c492   0x0800c492   0x000000e4   Code   RO          792    .text               mf_w.l(dmul.o)
-    0x0800c576   0x0800c576   0x00000022   Code   RO          794    .text               mf_w.l(dflti.o)
-    0x0800c598   0x0800c598   0x00000030   Code   RO          796    .text               mf_w.l(cdcmple.o)
-    0x0800c5c8   0x0800c5c8   0x00000030   Code   RO          798    .text               mf_w.l(cdrcmple.o)
-    0x0800c5f8   0x0800c5f8   0x00000038   Code   RO          800    .text               mf_w.l(d2f.o)
-    0x0800c630   0x0800c630   0x0000001e   Code   RO          816    .text               mc_w.l(llshl.o)
-    0x0800c64e   0x0800c64e   0x00000024   Code   RO          818    .text               mc_w.l(llsshr.o)
-    0x0800c672   0x0800c672   0x00000000   Code   RO          820    .text               mc_w.l(iusefp.o)
-    0x0800c672   0x0800c672   0x0000006e   Code   RO          821    .text               mf_w.l(fepilogue.o)
-    0x0800c6e0   0x0800c6e0   0x000000ba   Code   RO          823    .text               mf_w.l(depilogue.o)
-    0x0800c79a   0x0800c79a   0x00000002   PAD
-    0x0800c79c   0x0800c79c   0x00000024   Code   RO          825    .text               mc_w.l(init.o)
-    0x0800c7c0   0x0800c7c0   0x00000020   Code   RO          827    .text               mc_w.l(llushr.o)
-    0x0800c7e0   0x0800c7e0   0x00000056   Code   RO          837    .text               mc_w.l(__dczerorl2.o)
-    0x0800c836   0x0800c836   0x0000000e   Code   RO          831    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800c844   0x0800c844   0x00000002   Code   RO          832    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800c846   0x0800c846   0x0000000e   Code   RO          833    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800c854   0x0800c854   0x00000404   Data   RO          336    .constdata          ano_math.o
-    0x0800cc58   0x0800cc58   0x00000048   Data   RO          595    .conststring        misc.o
-    0x0800cca0   0x0800cca0   0x00000051   Data   RO          612    .conststring        stm32f4xx_adc.o
-    0x0800ccf1   0x0800ccf1   0x00000003   PAD
-    0x0800ccf4   0x0800ccf4   0x00000051   Data   RO          629    .conststring        stm32f4xx_dma.o
-    0x0800cd45   0x0800cd45   0x00000003   PAD
-    0x0800cd48   0x0800cd48   0x00000052   Data   RO          646    .conststring        stm32f4xx_exti.o
-    0x0800cd9a   0x0800cd9a   0x00000002   PAD
-    0x0800cd9c   0x0800cd9c   0x00000052   Data   RO          680    .conststring        stm32f4xx_gpio.o
-    0x0800cdee   0x0800cdee   0x00000002   PAD
-    0x0800cdf0   0x0800cdf0   0x00000051   Data   RO          697    .conststring        stm32f4xx_rcc.o
-    0x0800ce41   0x0800ce41   0x00000003   PAD
-    0x0800ce44   0x0800ce44   0x00000051   Data   RO          733    .conststring        stm32f4xx_tim.o
-    0x0800ce95   0x0800ce95   0x00000003   PAD
-    0x0800ce98   0x0800ce98   0x00000053   Data   RO          750    .conststring        stm32f4xx_usart.o
-    0x0800ceeb   0x0800ceeb   0x00000001   PAD
-    0x0800ceec   0x0800ceec   0x00000020   Data   RO          829    Region$$Table       anon$$obj.o
+    0x0800c1f8   0x0800c1f8   0x0000024c   Code   RO          766    .text               uart_receive.o
+    0x0800c444   0x0800c444   0x0000014e   Code   RO          790    .text               mf_w.l(dadd.o)
+    0x0800c592   0x0800c592   0x000000e4   Code   RO          792    .text               mf_w.l(dmul.o)
+    0x0800c676   0x0800c676   0x00000022   Code   RO          794    .text               mf_w.l(dflti.o)
+    0x0800c698   0x0800c698   0x00000030   Code   RO          796    .text               mf_w.l(cdcmple.o)
+    0x0800c6c8   0x0800c6c8   0x00000030   Code   RO          798    .text               mf_w.l(cdrcmple.o)
+    0x0800c6f8   0x0800c6f8   0x00000038   Code   RO          800    .text               mf_w.l(d2f.o)
+    0x0800c730   0x0800c730   0x0000001e   Code   RO          816    .text               mc_w.l(llshl.o)
+    0x0800c74e   0x0800c74e   0x00000024   Code   RO          818    .text               mc_w.l(llsshr.o)
+    0x0800c772   0x0800c772   0x00000000   Code   RO          820    .text               mc_w.l(iusefp.o)
+    0x0800c772   0x0800c772   0x0000006e   Code   RO          821    .text               mf_w.l(fepilogue.o)
+    0x0800c7e0   0x0800c7e0   0x000000ba   Code   RO          823    .text               mf_w.l(depilogue.o)
+    0x0800c89a   0x0800c89a   0x00000002   PAD
+    0x0800c89c   0x0800c89c   0x00000024   Code   RO          825    .text               mc_w.l(init.o)
+    0x0800c8c0   0x0800c8c0   0x00000020   Code   RO          827    .text               mc_w.l(llushr.o)
+    0x0800c8e0   0x0800c8e0   0x00000056   Code   RO          837    .text               mc_w.l(__dczerorl2.o)
+    0x0800c936   0x0800c936   0x0000000e   Code   RO          831    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800c944   0x0800c944   0x00000002   Code   RO          832    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800c946   0x0800c946   0x0000000e   Code   RO          833    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800c954   0x0800c954   0x00000404   Data   RO          336    .constdata          ano_math.o
+    0x0800cd58   0x0800cd58   0x00000048   Data   RO          595    .conststring        misc.o
+    0x0800cda0   0x0800cda0   0x00000051   Data   RO          612    .conststring        stm32f4xx_adc.o
+    0x0800cdf1   0x0800cdf1   0x00000003   PAD
+    0x0800cdf4   0x0800cdf4   0x00000051   Data   RO          629    .conststring        stm32f4xx_dma.o
+    0x0800ce45   0x0800ce45   0x00000003   PAD
+    0x0800ce48   0x0800ce48   0x00000052   Data   RO          646    .conststring        stm32f4xx_exti.o
+    0x0800ce9a   0x0800ce9a   0x00000002   PAD
+    0x0800ce9c   0x0800ce9c   0x00000052   Data   RO          680    .conststring        stm32f4xx_gpio.o
+    0x0800ceee   0x0800ceee   0x00000002   PAD
+    0x0800cef0   0x0800cef0   0x00000051   Data   RO          697    .conststring        stm32f4xx_rcc.o
+    0x0800cf41   0x0800cf41   0x00000003   PAD
+    0x0800cf44   0x0800cf44   0x00000051   Data   RO          733    .conststring        stm32f4xx_tim.o
+    0x0800cf95   0x0800cf95   0x00000003   PAD
+    0x0800cf98   0x0800cf98   0x00000053   Data   RO          750    .conststring        stm32f4xx_usart.o
+    0x0800cfeb   0x0800cfeb   0x00000001   PAD
+    0x0800cfec   0x0800cfec   0x00000020   Data   RO          829    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800cf0c, Size: 0x00001a30, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x000000b0])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x0800d00c, Size: 0x00001a38, Max: 0x00030000, ABSOLUTE, COMPRESSED[0x000000b0])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1193,19 +1198,21 @@ Memory Map of the image
     0x20000170   COMPRESSED   0x00000014   Data   RW          543    .data               drv_uart.o
     0x20000184   COMPRESSED   0x00000014   Data   RW          573    .data               system_stm32f4xx.o
     0x20000198   COMPRESSED   0x00000010   Data   RW          698    .data               stm32f4xx_rcc.o
-    0x200001a8   COMPRESSED   0x00000020   Data   RW          767    .data               uart_receive.o
-    0x200001c8        -       0x00000750   Zero   RW          161    .bss                ano_dt_lx.o
-    0x20000918        -       0x00000038   Zero   RW          200    .bss                ano_lx.o
-    0x20000950        -       0x00000030   Zero   RW          247    .bss                lx_fc_ext_sensor.o
-    0x20000980        -       0x0000000b   Zero   RW          287    .bss                lx_fc_state.o
-    0x2000098b   COMPRESSED   0x00000001   PAD
-    0x2000098c        -       0x0000006b   Zero   RW          310    .bss                drv_bsp.o
-    0x200009f7   COMPRESSED   0x00000001   PAD
-    0x200009f8        -       0x0000007c   Zero   RW          358    .bss                drv_anoof.o
-    0x20000a74        -       0x00000064   Zero   RW          381    .bss                drv_ubloxgps.o
-    0x20000ad8        -       0x00000064   Zero   RW          445    .bss                drv_adc.o
-    0x20000b3c        -       0x000006f4   Zero   RW          542    .bss                drv_uart.o
-    0x20001230        -       0x00000800   Zero   RW          564    STACK               startup_stm32f4xx.o
+    0x200001a8   COMPRESSED   0x00000023   Data   RW          767    .data               uart_receive.o
+    0x200001cb   COMPRESSED   0x00000001   PAD
+    0x200001cc        -       0x00000750   Zero   RW          161    .bss                ano_dt_lx.o
+    0x2000091c        -       0x00000038   Zero   RW          200    .bss                ano_lx.o
+    0x20000954        -       0x00000030   Zero   RW          247    .bss                lx_fc_ext_sensor.o
+    0x20000984        -       0x0000000b   Zero   RW          287    .bss                lx_fc_state.o
+    0x2000098f   COMPRESSED   0x00000001   PAD
+    0x20000990        -       0x0000006b   Zero   RW          310    .bss                drv_bsp.o
+    0x200009fb   COMPRESSED   0x00000001   PAD
+    0x200009fc        -       0x0000007c   Zero   RW          358    .bss                drv_anoof.o
+    0x20000a78        -       0x00000064   Zero   RW          381    .bss                drv_ubloxgps.o
+    0x20000adc        -       0x00000064   Zero   RW          445    .bss                drv_adc.o
+    0x20000b40        -       0x000006f4   Zero   RW          542    .bss                drv_uart.o
+    0x20001234   COMPRESSED   0x00000004   PAD
+    0x20001238        -       0x00000800   Zero   RW          564    STACK               startup_stm32f4xx.o
 
 
 ==============================================================================
@@ -1244,13 +1251,13 @@ Image component sizes
      12780        628         81          0          0      31464   stm32f4xx_tim.o
       3620        116         83          0          0      10336   stm32f4xx_usart.o
        528         46          0         20          0       2211   system_stm32f4xx.o
-       332         46          0         32          0       2724   uart_receive.o
+       588         54          0         35          0       3507   uart_receive.o
        760         44          0          6          0       1161   user_task.o
 
     ----------------------------------------------------------------------
-     49576       2552       2112        456       6248     476383   Object Totals
+     49832       2560       2112        460       6252     477166   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         0          0         17          3          2          0   (incl. Padding)
+         0          0         17          4          6          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1301,15 +1308,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     50892       2568       2112        456       6248     472107   Grand Totals
-     50892       2568       2112        176       6248     472107   ELF Image Totals (compressed)
-     50892       2568       2112        176          0          0   ROM Totals
+     51148       2576       2112        460       6252     472890   Grand Totals
+     51148       2576       2112        176       6252     472890   ELF Image Totals (compressed)
+     51148       2576       2112        176          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                53004 (  51.76kB)
-    Total RW  Size (RW Data + ZI Data)              6704 (   6.55kB)
-    Total ROM Size (Code + RO Data + RW Data)      53180 (  51.93kB)
+    Total RO  Size (Code + RO Data)                53260 (  52.01kB)
+    Total RW  Size (RW Data + ZI Data)              6712 (   6.55kB)
+    Total ROM Size (Code + RO Data + RW Data)      53436 (  52.18kB)
 
 ==============================================================================
 

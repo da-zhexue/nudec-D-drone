@@ -1,5 +1,7 @@
 #include "uart_receive.h"
 #include "Drv_Uart.h"
+#include "LX_FC_Fun.h"
+
 CircleInfo circle_data = {.x = 80, .y = 60};
 PositionInfo position_data;
 SearchInfo search_data;
@@ -84,4 +86,54 @@ void pwm_turn(u8 cmd) // cmd=0x01->yaw    0x02->pitch
 		uart2_send_data[3] = 0x5D;
 		
 		DrvUart2SendBuf(uart2_send_data, sizeof(uart2_send_data));
+}
+
+void time_dly_cnt(u16 delay_ms, u8* step)
+{
+		static u16 dly_cnt = 0;
+		if(dly_cnt<delay_ms)
+		{
+				dly_cnt+=20;//ms
+		}
+		else
+		{
+				dly_cnt = 0;
+				step += 1;
+		}			
+}
+
+void XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y, u8* step)
+{
+		static u8 compensate_step = 0;
+		s16 move_x_cm = target_x - current_x;
+		s16 move_y_cm = target_y - current_y;
+		switch (compensate_step)
+		{
+				case 0:
+						if(move_x_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 90);
+						else if(move_x_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
+						else 
+								compensate_step++;
+						break;
+				case 1:
+						//된3취
+						time_dly_cnt(3000, &compensate_step);
+						break;
+				case 2:
+						if(move_y_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 180);
+						else if(move_y_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
+						else 
+								compensate_step++;
+						break;
+				case 3:
+						//된3취
+						time_dly_cnt(3000, &compensate_step);
+						step++;
+						break;
+		}
+		
 }

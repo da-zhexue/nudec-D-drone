@@ -31,3 +31,4 @@
 .\build\uart_receive.o: ..\DriversMcu\STM32F407\Drivers\Drv_Sys.h
 .\build\uart_receive.o: ..\FcSrc\ANO_LX.h
 .\build\uart_receive.o: ..\DriversMcu\STM32F407\Drivers\Drv_Uart.h
+.\build\uart_receive.o: ..\FcSrc\LX_FC_Fun.h

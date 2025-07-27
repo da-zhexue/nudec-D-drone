@@ -151,6 +151,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	esp_ap_init();
 	pwm_on();
+	pwm_pitch();
   /* USER CODE END 2 */
 
   /* Infinite loop */

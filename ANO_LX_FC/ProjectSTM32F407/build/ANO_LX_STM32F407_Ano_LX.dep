@@ -94,8 +94,8 @@ I (..\DriversBsp\Drv_BSP.h)(0x5F4B4EE7)
 I (..\DriversMcu\STM32F407\Drivers\Drv_Sys.h)(0x5F4B35A3)
 I (..\FcSrc\ANO_LX.h)(0x60F0369C)
 I (..\DriversMcu\STM32F407\Drivers\Drv_RcIn.h)(0x5F4B4D14)
-I (..\FcSrc\LX_FC_Fun.h)(0x68372569)
-I (..\FcSrc\uart_receive.h)(0x6885E4C1)
+I (..\FcSrc\LX_FC_Fun.h)(0x68861858)
+I (..\FcSrc\uart_receive.h)(0x688618CE)
 F (..\FcSrc\User_Task.h)(0x67ED4728)()
 F (..\FcSrc\ANO_DT_LX.c)(0x60F0376E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\ano_dt_lx.o --omf_browse .\build\ano_dt_lx.crf --depend .\build\ano_dt_lx.d)
 I (..\FcSrc\ANO_DT_LX.h)(0x5F4B3380)
@@ -172,7 +172,7 @@ I (..\DriversBsp\Drv_AnoOf.h)(0x5F4B3381)
 I (..\DriversMcu\STM32F407\Drivers\Drv_adc.h)(0x5F4B4941)
 I (..\DriversMcu\STM32F407\Drivers\Drv_led.h)(0x5F4B4198)
 I (..\DriversBsp\Drv_UbloxGPS.h)(0x5F4B39B1)
-I (..\FcSrc\LX_FC_Fun.h)(0x68372569)
+I (..\FcSrc\LX_FC_Fun.h)(0x68861858)
 I (..\DriversMcu\STM32F407\Drivers\Drv_Uart.h)(0x5F768433)
 F (..\FcSrc\ANO_LX.h)(0x60F0369C)()
 F (..\FcSrc\LX_FC_EXT_Sensor.c)(0x5F4B3381)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\lx_fc_ext_sensor.o --omf_browse .\build\lx_fc_ext_sensor.crf --depend .\build\lx_fc_ext_sensor.d)
@@ -209,7 +209,7 @@ I (..\DriversBsp\Drv_AnoOf.h)(0x5F4B3381)
 I (..\FcSrc\ANO_DT_LX.h)(0x5F4B3380)
 F (..\FcSrc\LX_FC_EXT_Sensor.h)(0x5F4B3380)()
 F (..\FcSrc\LX_FC_Fun.c)(0x68860D6F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\lx_fc_fun.o --omf_browse .\build\lx_fc_fun.crf --depend .\build\lx_fc_fun.d)
-I (..\FcSrc\LX_FC_Fun.h)(0x68372569)
+I (..\FcSrc\LX_FC_Fun.h)(0x68861858)
 I (..\FcSrc\SysConfig.h)(0x5F4B4DDD)
 I (..\DriversMcu\STM32F407\McuConfig.h)(0x5F75F9DB)
 I (..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include\stm32f4xx.h)(0x5B8B8FEA)
@@ -240,7 +240,7 @@ I (..\DriversMcu\STM32F407\Drivers\Drv_Sys.h)(0x5F4B35A3)
 I (..\FcSrc\ANO_LX.h)(0x60F0369C)
 I (..\FcSrc\LX_FC_State.h)(0x5F4B3381)
 I (..\FcSrc\ANO_DT_LX.h)(0x5F4B3380)
-F (..\FcSrc\LX_FC_Fun.h)(0x68372569)()
+F (..\FcSrc\LX_FC_Fun.h)(0x68861858)()
 F (..\FcSrc\LX_FC_State.c)(0x60F03D0E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\lx_fc_state.o --omf_browse .\build\lx_fc_state.crf --depend .\build\lx_fc_state.d)
 I (..\FcSrc\LX_FC_State.h)(0x5F4B3381)
 I (..\FcSrc\SysConfig.h)(0x5F4B4DDD)
@@ -273,7 +273,7 @@ I (..\DriversMcu\STM32F407\Drivers\Drv_Sys.h)(0x5F4B35A3)
 I (..\FcSrc\ANO_LX.h)(0x60F0369C)
 I (..\DriversMcu\STM32F407\Drivers\Drv_RcIn.h)(0x5F4B4D14)
 I (..\FcSrc\ANO_DT_LX.h)(0x5F4B3380)
-I (..\FcSrc\LX_FC_Fun.h)(0x68372569)
+I (..\FcSrc\LX_FC_Fun.h)(0x68861858)
 F (..\FcSrc\LX_FC_State.h)(0x5F4B3381)()
 F (..\DriversBsp\Drv_BSP.c)(0x6885E2C8)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\drv_bsp.o --omf_browse .\build\drv_bsp.crf --depend .\build\drv_bsp.d)
 I (..\DriversBsp\Drv_BSP.h)(0x5F4B4EE7)
@@ -663,7 +663,7 @@ I (..\FcSrc\ANO_LX.h)(0x60F0369C)
 I (..\FcSrc\Ano_DT_LX.h)(0x5F4B3380)
 I (..\DriversBsp\Drv_UbloxGPS.h)(0x5F4B39B1)
 I (..\DriversBsp\Drv_AnoOf.h)(0x5F4B3381)
-I (..\FcSrc\uart_receive.h)(0x6885E4C1)
+I (..\FcSrc\uart_receive.h)(0x688618CE)
 F (..\DriversMcu\STM32F407\Drivers\Drv_Uart.h)(0x5F768433)()
 F (..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Source\Templates\arm\startup_stm32f4xx.s)(0x5B8B8FEB)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 529" --pd "STM32F429xx SETA 1"--list .\build\startup_stm32f4xx.lst --xref -o .\build\startup_stm32f4xx.o --depend .\build\startup_stm32f4xx.d)
 F (..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c)(0x5B8B8FEB)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\system_stm32f4xx.o --omf_browse .\build\system_stm32f4xx.crf --depend .\build\system_stm32f4xx.d)
@@ -931,8 +931,8 @@ I (..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ti
 I (..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h)(0x5B8B8FEE)
 I (..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h)(0x5B8B8FEC)
 F (..\Doc\note.txt)(0x5B8B8FD8)()
-F (..\FcSrc\uart_receive.c)(0x68861020)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\uart_receive.o --omf_browse .\build\uart_receive.crf --depend .\build\uart_receive.d)
-I (..\FcSrc\uart_receive.h)(0x6885E4C1)
+F (..\FcSrc\uart_receive.c)(0x688619E6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --signed_chars -I .\build -I ..\FcSrc -I ..\DriversBsp -I ..\DriversMcu\STM32F407\Drivers -I ..\DriversMcu\STM32F407\Libraries\STM32F4xx_StdPeriph_Driver\inc -I ..\DriversMcu\STM32F407\Libraries\CMSIS\Include -I ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include -I ..\DriversMcu\STM32F407 --c99-I.\RTE\_Ano_LX-IE:\keil\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\keil5\ARM\CMSIS\Include-D__UVISION_VERSION="529" -DSTM32F429xx -DUSE_STDPERIPH_DRIVER -DUSE_USB_OTG_FS-o .\build\uart_receive.o --omf_browse .\build\uart_receive.crf --depend .\build\uart_receive.d)
+I (..\FcSrc\uart_receive.h)(0x688618CE)
 I (..\FcSrc\SysConfig.h)(0x5F4B4DDD)
 I (..\DriversMcu\STM32F407\McuConfig.h)(0x5F75F9DB)
 I (..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include\stm32f4xx.h)(0x5B8B8FEA)
@@ -962,4 +962,5 @@ I (..\DriversBsp\Drv_BSP.h)(0x5F4B4EE7)
 I (..\DriversMcu\STM32F407\Drivers\Drv_Sys.h)(0x5F4B35A3)
 I (..\FcSrc\ANO_LX.h)(0x60F0369C)
 I (..\DriversMcu\STM32F407\Drivers\Drv_Uart.h)(0x5F768433)
-F (..\FcSrc\uart_receive.h)(0x6885E4C1)()
+I (..\FcSrc\LX_FC_Fun.h)(0x68861858)
+F (..\FcSrc\uart_receive.h)(0x688618CE)()

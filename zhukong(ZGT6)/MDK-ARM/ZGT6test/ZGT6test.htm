@@ -3,7 +3,7 @@
 <title>Static Call Graph - [ZGT6test\ZGT6test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ZGT6test\ZGT6test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 27 19:39:51 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 27 20:19:26 2025
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -900,8 +900,8 @@ Global Symbols
 <P><STRONG><a name="[30]"></a>USART2_IRQHandler</STRONG> (Thumb, 90 bytes, Stack size 8 bytes, bsp_uart.o(i.USART2_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = USART2_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_yaw
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_pitch
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_pitch
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_yaw
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
@@ -952,10 +952,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 94 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = main &rArr; esp_ap_init &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_height
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_pitch
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART6_UART_Init
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
@@ -983,7 +984,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a3]"></a>pwm_pitch</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, bsp_pwm.o(i.pwm_pitch))
-<BR><BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART2_IRQHandler
 </UL>
 
 <P><STRONG><a name="[a4]"></a>pwm_yaw</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, bsp_pwm.o(i.pwm_yaw))
