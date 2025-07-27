@@ -108,7 +108,7 @@ void UserTask_OneKeyCmd(void)
 				case 4:
 				{
 					//起飞
-					mission_step += OneKey_Takeoff(100);//参数单位：厘米； 0：默认上位机设置的高度。
+					mission_step += OneKey_Takeoff(150);//参数单位：厘米； 0：默认上位机设置的高度。
 				}
 				break;
 				case 5:
@@ -128,13 +128,13 @@ void UserTask_OneKeyCmd(void)
 				case 6:
 				{
 					//左移2米
-					mission_step += Horizontal_Move(200, 50, 270);
+					mission_step += Horizontal_Move(250, 50, 270);
 				}
 				break;	
 				case 7:
 				{
 					//等10秒
-					if(time_dly_cnt_ms<10000)
+					if(time_dly_cnt_ms<8000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
@@ -148,7 +148,7 @@ void UserTask_OneKeyCmd(void)
 				case 8:
 				{
 					//前移3米
-					mission_step += Horizontal_Move(300, 50, 0);
+					mission_step += Horizontal_Move(350, 50, 0);
 				}
 				break;
 				case 9:
@@ -167,11 +167,11 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 10:
 				{
-					sc16 move_x = (circle_data.x - 80)/2;
+					s16 move_x = circle_data.x - 80;
 					if(move_x >= 5)
-						mission_step += Horizontal_Move(move_x, 25, 90);
+						mission_step += Horizontal_Move(move_x, 15, 90);
 					else if(move_x <= -5)
-						mission_step += Horizontal_Move(move_x*(-1), 25, 270);
+						mission_step += Horizontal_Move(move_x*(-1), 15, 270);
 					else 
 						mission_step++;
 				}
@@ -179,7 +179,7 @@ void UserTask_OneKeyCmd(void)
 				case 11:
 				{
 					//等3秒
-					if(time_dly_cnt_ms<3000)
+					if(time_dly_cnt_ms<4000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
@@ -192,11 +192,11 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 12:
 				{
-					sc16 move_y = (circle_data.y - 60)/2;
+					s16 move_y = circle_data.y - 60;
 					if(move_y >= 5)
-						mission_step += Horizontal_Move(move_y, 25, 180);
+						mission_step += Horizontal_Move(move_y, 15, 180);
 					else if(move_y <= -5)
-						mission_step += Horizontal_Move(move_y*(-1), 25, 0);
+						mission_step += Horizontal_Move(move_y*(-1), 15, 0);
 					else 
 						mission_step++;
 				}
@@ -204,7 +204,7 @@ void UserTask_OneKeyCmd(void)
 				case 13:
 				{
 					//等3秒
-					if(time_dly_cnt_ms<3000)
+					if(time_dly_cnt_ms<4000)
 					{
 						time_dly_cnt_ms+=20;//ms
 					}
