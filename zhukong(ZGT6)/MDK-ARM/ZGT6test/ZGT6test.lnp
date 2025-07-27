@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp
+--cpu=Cortex-M4.fp.sp
 "zgt6test\startup_stm32f407xx.o"
 "zgt6test\main.o"
 "zgt6test\gpio.o"
@@ -24,7 +24,6 @@
 "zgt6test\stm32f4xx_hal_uart.o"
 "zgt6test\system_stm32f4xx.o"
 "zgt6test\bsp_uart.o"
-"zgt6test\ax_laser.o"
 "zgt6test\bsp_pwm.o"
 "zgt6test\stp23.o"
 --library_type=microlib --strict --scatter "ZGT6test\ZGT6test.sct"

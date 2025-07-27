@@ -118,8 +118,13 @@ void USART2_IRQHandler(void)
 	else if(huart2.Instance->SR & UART_FLAG_IDLE)
 	{
 			receive = huart2.Instance->DR;
-//			if(drone_data[0] == 'o' && drone_data[1] == 'k')
-//					pwm_turn();
+			if(drone_data[0] == 0xAA && drone_data[1] == 0x55 && drone_data[3] == 0x5D)
+			{
+					if(drone_data[2] == 0x01)
+							pwm_yaw();
+					else if(drone_data[2] == 0x02)
+							pwm_pitch();
+			}
 	}
 }
 
