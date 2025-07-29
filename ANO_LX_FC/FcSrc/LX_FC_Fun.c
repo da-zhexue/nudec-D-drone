@@ -1,7 +1,8 @@
 #include "LX_FC_Fun.h"
 #include "LX_FC_State.h"
 #include "ANO_DT_LX.h"
-
+#include "Ano_Math.h"
+#include "uart_receive.h"
 /*==========================================================================
  * 描述    ：凌霄飞控基本功能主程序
  * 更新时间：2020-03-31 
@@ -111,6 +112,86 @@ u8 OneKey_Return_Home()
 	}
 }
 
+//延时封装
+u8 time_dly_cnt(u16 delay_ms)
+{
+		static u16 dly_cnt = 0;
+		if(dly_cnt<delay_ms)
+		{
+				dly_cnt+=20;//ms
+		}
+		else
+		{
+				dly_cnt = 0;
+				return 1;
+		}			
+		return 0;
+}
+
+//xy补偿(xy分别补偿)
+u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
+{
+		static u8 compensate_step = 0;
+		s16 move_x_cm = target_x - current_x;
+		s16 move_y_cm = target_y - current_y;
+		switch (compensate_step)
+		{
+				case 0:
+						if(move_x_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 90);
+						else if(move_x_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
+						else 
+								compensate_step++;
+						break;
+				case 1:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 2:
+						if(move_y_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 180);
+						else if(move_y_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
+						else 
+								compensate_step++;
+						break;
+				case 3:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 4:
+						compensate_step = 0;
+						return 1;
+		}
+		return 0;
+}
+
+//xy补偿(xy一起补偿)
+u8 XY_Compensate_2(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
+{
+		static u8 compensate_step = 0;
+		s16 move_x_cm = target_x - current_x;
+		move_x_cm = (move_x_cm >= NEUTRAL_ZONE || move_x_cm <= -NEUTRAL_ZONE) ? move_x_cm : 0;
+		s16 move_y_cm = target_y - current_y;
+		move_y_cm = (move_y_cm >= NEUTRAL_ZONE || move_y_cm <= -NEUTRAL_ZONE) ? move_y_cm : 0;
+
+		switch (compensate_step)
+		{
+				case 0:
+						compensate_step += MoveXY(move_x_cm, move_y_cm, COMPENSATE_VELOCITY);
+						break;
+				case 1:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 2:
+						compensate_step = 0;
+						return 1;
+		}
+		return 0;
+}
+
 //一键起飞(高度cm)
 u8 OneKey_Takeoff(u16 height_cm)
 {
@@ -174,6 +255,26 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 	{
 		return 0;
 	}
+}
+//平移(X cm, Y cm, 速度cmps)
+u8 MoveXY(s16 x_cm, s16 y_cm, u16 velocity_cmps)
+{
+	
+    REAL distance = my_sqrt(x_cm * x_cm + y_cm * y_cm);
+    if (distance < 0.0001f) {
+        return 0; // 无效坐标
+    }
+		
+    REAL angle_rad = fast_atan2((REAL)y_cm, (REAL)x_cm);       // [-π, π]
+    REAL angle_deg = angle_rad * (180.0f / MY_PPPIII); // 转角度[-180, 180]
+    if (angle_deg < 0) {
+        angle_deg += 360.0f;
+    }
+    
+    u16 distance_cm = (u16)(distance + 0.5f);
+    u16 dir_angle   = (u16)(angle_deg + 0.5f);
+
+    return Horizontal_Move(distance_cm, velocity_cmps, dir_angle);
 }
 //目标对地高度
 u8 Target_Height(s32 height_cm)

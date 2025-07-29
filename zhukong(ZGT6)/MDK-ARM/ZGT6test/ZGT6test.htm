@@ -3,7 +3,7 @@
 <title>Static Call Graph - [ZGT6test\ZGT6test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ZGT6test\ZGT6test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 27 20:19:26 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue Jul 29 10:59:27 2025
 <BR><P>
 <H3>Maximum Stack Usage =        216 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -393,8 +393,8 @@ Global Symbols
 
 <P><STRONG><a name="[b4]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
-<P><STRONG><a name="[a9]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
+<P><STRONG><a name="[aa]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
 </UL>
 
 <P><STRONG><a name="[b5]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
@@ -483,7 +483,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
 </UL>
 
 <P><STRONG><a name="[77]"></a>HAL_GPIO_Init</STRONG> (Thumb, 450 bytes, Stack size 40 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -494,14 +494,14 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 </UL>
 
-<P><STRONG><a name="[ab]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
+<P><STRONG><a name="[ac]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
 <BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[94]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
@@ -617,7 +617,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ad]"></a>HAL_TIM_Base_Start</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_Base_Start))
-<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
 </UL>
 
 <P><STRONG><a name="[75]"></a>HAL_TIM_MspPostInit</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, tim.o(i.HAL_TIM_MspPostInit))
@@ -660,7 +660,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_CCxChannelCmd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
 </UL>
 
 <P><STRONG><a name="[87]"></a>HAL_UARTEx_RxEventCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.HAL_UARTEx_RxEventCallback))
@@ -733,9 +733,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_height
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_xy
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_obstacle
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_lidar_data
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
@@ -914,10 +914,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[51]"></a>USART6_IRQHandler</STRONG> (Thumb, 214 bytes, Stack size 48 bytes, bsp_uart.o(i.USART6_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = USART6_IRQHandler &rArr; send_lidar_data &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[51]"></a>USART6_IRQHandler</STRONG> (Thumb, 272 bytes, Stack size 56 bytes, bsp_uart.o(i.USART6_IRQHandler))
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = USART6_IRQHandler &rArr; send_lidar_data &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_xy
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_obstacle
 <LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_lidar_data
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
@@ -941,23 +942,22 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
-<P><STRONG><a name="[a8]"></a>esp_ap_init</STRONG> (Thumb, 304 bytes, Stack size 152 bytes, main.o(i.esp_ap_init))
+<P><STRONG><a name="[a9]"></a>esp_ap_init</STRONG> (Thumb, 304 bytes, Stack size 152 bytes, main.o(i.esp_ap_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = esp_ap_init &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 98 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 90 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = main &rArr; esp_ap_init &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;send_height
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_pitch
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
+<BR>[Calls]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_pitch
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pwm_on
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART6_UART_Init
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART3_UART_Init
 <LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
@@ -967,14 +967,14 @@ Global Symbols
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;esp_ap_init
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[aa]"></a>pwm_on</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, bsp_pwm.o(i.pwm_on))
+<P><STRONG><a name="[ab]"></a>pwm_on</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, bsp_pwm.o(i.pwm_on))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = pwm_on &rArr; HAL_TIM_PWM_Start &rArr; TIM_CCxChannelCmd
 </UL>
 <BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_Start
@@ -996,16 +996,16 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[ac]"></a>send_height</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, bsp_uart.o(i.send_height))
-<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = send_height &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[a6]"></a>send_lidar_data</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, bsp_uart.o(i.send_lidar_data))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = send_lidar_data &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART6_IRQHandler
 </UL>
 
-<P><STRONG><a name="[a6]"></a>send_lidar_data</STRONG> (Thumb, 120 bytes, Stack size 24 bytes, bsp_uart.o(i.send_lidar_data))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = send_lidar_data &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+<P><STRONG><a name="[a8]"></a>send_obstacle</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, bsp_uart.o(i.send_obstacle))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = send_obstacle &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>

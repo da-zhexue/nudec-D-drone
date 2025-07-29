@@ -43,6 +43,19 @@ void send_xy(int16_t x, int16_t y)
     send_data[7] = 0x5D; // 帧尾
     HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
 }
+void send_obstacle(uint16_t angle, uint16_t dist)
+{
+		uint8_t send_data[8];
+    send_data[0] = 0xAA; // 帧头1
+		send_data[1] = 0x55; // 帧头2
+		send_data[2] = 0x08; // 指令位 0x08:雷达避障信息(最近障碍物角度和距离)
+    send_data[3] = (angle >> 8) & 0xff; // 数据位1
+    send_data[4] = angle & 0xff; // 数据位2
+		send_data[5] = (dist >> 8) & 0xff; // 数据位3
+		send_data[6] = dist & 0xff; // 数据位4
+    send_data[7] = 0x5D; // 帧尾
+    HAL_UART_Transmit(&huart2, send_data, 8, 0xffff);
+}
 void send_lidar_data(LidarDataTypeDef *data)
 {
 		uint8_t send_data[8];
@@ -187,7 +200,7 @@ void USART6_IRQHandler(void)
 				else
 				{
 					//判断帧头2 55
-					if(Res == LD_HEADER2 || Res == LD_HEADER3)
+					if(Res == LD_HEADER2 || Res == LD_HEADER3 || Res == LD_HEADER4)
 					{
 						uart6_rx_buf[uart6_rx_con] = Res;
 						uart6_rx_con = 2;					
@@ -199,15 +212,16 @@ void USART6_IRQHandler(void)
 			else  //接收数据
 			{
 				//判断是否接收完
-				if(uart6_rx_con < LD_F_LEN1)
+				if(uart6_rx_buf[1] == LD_HEADER2)
 				{
-					uart6_rx_buf[uart6_rx_con] = Res;
-					uart6_rx_con++;
-				}
-				else
-				{
-					if(uart6_rx_buf[1] == LD_HEADER2)
+					if(uart6_rx_con < LD_F_LEN1)
 					{
+						uart6_rx_buf[uart6_rx_con] = Res;
+						uart6_rx_con++;
+					}
+					else
+					{
+						
 						for (int i = 0; i < 4; i++) {
 							uint16_t high_byte = uart6_rx_buf[2 + i*2];
 							uint16_t low_byte  = uart6_rx_buf[3 + i*2];
@@ -215,19 +229,43 @@ void USART6_IRQHandler(void)
 							lidardata[i].angle = i * 90;
 						}
 						send_lidar_data(lidardata);
+	
+						for(int i=0; i<LD_F_LEN1; i++)
+						{	
+							uart6_rx_buf[i] = 0;
+						}
+						//复位
+						uart6_rx_con = 0;
 					}
-					else if(uart6_rx_buf[1] == LD_HEADER3)
+				}
+				else if(uart6_rx_buf[1] == LD_HEADER3 || uart6_rx_buf[1] == LD_HEADER4)
+				{
+					if(uart6_rx_con < LD_F_LEN2)
 					{
-						int16_t lidar_x = (uart6_rx_buf[2] << 8) | uart6_rx_buf[3];
-						int16_t lidar_y = (uart6_rx_buf[4] << 8) | uart6_rx_buf[5];
-						send_xy(lidar_x, lidar_y);
+						uart6_rx_buf[uart6_rx_con] = Res;
+						uart6_rx_con++;
 					}
-					for(int i=0; i<LD_F_LEN1; i++)
-					{	
-						uart6_rx_buf[i] = 0;
+					else
+					{
+						if(uart6_rx_buf[1] == LD_HEADER3)
+						{
+							int16_t lidar_x = (uart6_rx_buf[2] << 8) | uart6_rx_buf[3];
+							int16_t lidar_y = (uart6_rx_buf[4] << 8) | uart6_rx_buf[5];
+							send_xy(lidar_x, lidar_y);
+						}
+						else if(uart6_rx_buf[1] == LD_HEADER4)
+						{
+							uint16_t min_angle = (uart6_rx_buf[2] << 8) | uart6_rx_buf[3];
+							uint16_t min_dist  = (uart6_rx_buf[4] << 8) | uart6_rx_buf[5];
+							send_obstacle(min_angle, min_dist);
+						}
+						for(int i=0; i<LD_F_LEN1; i++)
+						{	
+							uart6_rx_buf[i] = 0;
+						}
+						//复位
+						uart6_rx_con = 0;
 					}
-					//复位
-					uart6_rx_con = 0;
 				}
 			}
 			

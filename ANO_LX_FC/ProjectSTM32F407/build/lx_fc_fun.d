@@ -32,3 +32,5 @@
 .\build\lx_fc_fun.o: ..\FcSrc\ANO_LX.h
 .\build\lx_fc_fun.o: ..\FcSrc\LX_FC_State.h
 .\build\lx_fc_fun.o: ..\FcSrc\ANO_DT_LX.h
+.\build\lx_fc_fun.o: ..\DriversBsp\Ano_Math.h
+.\build\lx_fc_fun.o: ..\FcSrc\uart_receive.h

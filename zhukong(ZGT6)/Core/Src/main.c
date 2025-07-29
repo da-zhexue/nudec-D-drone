@@ -149,9 +149,9 @@ int main(void)
   MX_UART4_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-	esp_ap_init();
 	pwm_on();
 	pwm_pitch();
+	esp_ap_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -167,7 +167,7 @@ int main(void)
 			HAL_GPIO_WritePin(GPIOA,GPIO_PIN_1,GPIO_PIN_RESET);
 		}
     HAL_Delay(100);
-    send_height(distance);
+    //send_height(distance);
 		//printf("distance: %d \n", distance);
   }
   /* USER CODE END 3 */

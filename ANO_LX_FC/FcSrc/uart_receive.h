@@ -10,6 +10,7 @@
 #define CMD_LAND             0x05  // 辅助降落
 #define CMD_OBSTACLE_AVOID_1 0x06  // 避障(0°和90°)
 #define CMD_OBSTACLE_AVOID_2 0x07  // 避障(180°和270°)
+#define CMD_OBSTACLE_AVOID_3 0x08  // 避障(最近障碍物角度和距离)
 
 #define NEUTRAL_ZONE 5 // 死区cm
 #define COMPENSATE_VELOCITY 25 // 补偿速度cm/s
@@ -36,6 +37,8 @@ typedef struct{
 } SearchInfo;
 typedef struct{
 	u16 dis[4];
+	u16 min_ang;
+	u16 min_dis;
 } LidarInfo;
 extern CircleInfo circle_data;
 extern PositionInfo position_data;
@@ -43,7 +46,5 @@ extern SearchInfo search_data;
 extern LidarInfo lidar_data;
 
 void UART3_DataParser(u8 data);
-void time_dly_cnt(u16 delay_ms, u8* step);
-void XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y, u8* step);
 
 #endif
