@@ -163,6 +163,9 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 				case 4:
 						compensate_step = 0;
 						return 1;
+				default:
+						compensate_step = 0;
+						break;
 		}
 		return 0;
 }
@@ -188,8 +191,20 @@ u8 XY_Compensate_2(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 				case 2:
 						compensate_step = 0;
 						return 1;
+				default:
+						compensate_step = 0;
+						break;
 		}
 		return 0;
+}
+
+//避障
+u8 Obstacle_Aviod(void)
+{
+		if(lidar_data.min_dis <= 30)
+			return Horizontal_Move_delay(lidar_data.min_dis-30, 10, (lidar_data.min_ang+180)%360, 1000);
+		else 
+			return 1;
 }
 
 //一键起飞(高度cm)
@@ -256,6 +271,27 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 		return 0;
 	}
 }
+//平移+延时(距离cm，速度cmps，方向角度0-360度, 延时ms)
+u8 Horizontal_Move_delay(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360, u16 delay_ms)
+{
+	static u8 move_step = 0;
+	switch(move_step)
+	{
+		case 0:
+			move_step += Horizontal_Move(distance_cm, velocity_cmps, dir_angle_0_360);
+			break;
+		case 1:
+			move_step += time_dly_cnt(delay_ms);
+			break;
+		case 2:
+			move_step = 0;
+			return 1;
+		default:
+			move_step = 0;
+			break;
+	}
+	return 0;
+}
 //平移(X cm, Y cm, 速度cmps)
 u8 MoveXY(s16 x_cm, s16 y_cm, u16 velocity_cmps)
 {
@@ -276,7 +312,28 @@ u8 MoveXY(s16 x_cm, s16 y_cm, u16 velocity_cmps)
 
     return Horizontal_Move(distance_cm, velocity_cmps, dir_angle);
 }
-//目标对地高度
+//平移+延时(距离cm，速度cmps，方向角度0-360度, 延时ms)
+u8 Move_XY_delay(s16 x_cm, s16 y_cm, u16 velocity_cmps, u16 delay_ms)
+{
+	static u8 move_step = 0;
+	switch(move_step)
+	{
+		case 0:
+			move_step += MoveXY(x_cm, y_cm, velocity_cmps);
+			break;
+		case 1:
+			move_step += time_dly_cnt(delay_ms);
+			break;
+		case 2:
+			move_step = 0;
+			return 1;
+		default:
+			move_step = 0;
+			break;
+	}
+	return 0;
+}
+//目标对地高度(高度cm)
 u8 Target_Height(s32 height_cm)
 {
 	if (dt.wait_ck == 0) //没有其他等待校验的CMD时才发送本CMD
@@ -298,6 +355,27 @@ u8 Target_Height(s32 height_cm)
 	{
 		return 0;
 	}
+}
+//目标对地高度+延时(高度cm, 延时ms)
+u8 Target_Height_delay(s32 height_cm, u16 delay_ms)
+{
+	static u8 move_step = 0;
+	switch(move_step)
+	{
+		case 0:
+			move_step += Target_Height(height_cm);
+			break;
+		case 1:
+			move_step += time_dly_cnt(delay_ms);
+			break;
+		case 2:
+			move_step = 0;
+			return 1;
+		default:
+			move_step = 0;
+			break;
+	}
+	return 0;
 }
 //上升高度
 u8 Up_Height(u16 height_cm, u16 velocity_cmps)
@@ -392,6 +470,30 @@ u8 Yaw_Left_Rotate(u16 angle_deg, u16 angular_velocity_degps)
 	{
 		return 0;
 	}
+}
+//yaw轴旋转+延时(向右转为正, 向左转为负)
+u8 Yaw_Rotate_delay(s16 angle_deg, u16 angular_velocity_degps, u16 delay_ms)
+{
+	static u8 move_step = 0;
+	switch(move_step)
+	{
+		case 0:
+			if(angle_deg > 0)
+				move_step += Yaw_Right_Rotate(angle_deg, angular_velocity_degps);
+			else 
+				move_step += Yaw_Left_Rotate(angle_deg * (-1), angular_velocity_degps);
+			break;
+		case 1:
+			move_step += time_dly_cnt(delay_ms);
+			break;
+		case 2:
+			move_step = 0;
+			return 1;
+		default:
+			move_step = 0;
+			break;
+	}
+	return 0;
 }
 //水平校准
 u8 Horizontal_Calibrate()
