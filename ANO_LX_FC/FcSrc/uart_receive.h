@@ -41,7 +41,7 @@ typedef struct{
 	u16 min_dis;
 } LidarInfo;
 extern CircleInfo circle_data;
-extern PositionInfo position_data;
+extern PositionInfo target_position, position_data;
 extern SearchInfo search_data;
 extern LidarInfo lidar_data;
 

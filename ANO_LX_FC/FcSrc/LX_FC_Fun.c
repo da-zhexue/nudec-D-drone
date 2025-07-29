@@ -112,6 +112,15 @@ u8 OneKey_Return_Home()
 	}
 }
 
+//获得目标位置
+void Get_target_position(u16 distance_cm, u16 velocity_cmps)
+{
+	double dx_double = (double)distance_cm * my_cos((double)velocity_cmps);
+	double dy_double = (double)distance_cm * my_sin((double)velocity_cmps);
+	target_position.x += (u16)dx_double;
+	target_position.y += (u16)dy_double;
+}
+
 //延时封装
 u8 time_dly_cnt(u16 delay_ms)
 {
@@ -134,6 +143,8 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 		static u8 compensate_step = 0;
 		s16 move_x_cm = target_x - current_x;
 		s16 move_y_cm = target_y - current_y;
+		target_position.x -= move_x_cm;
+		target_position.y -= move_y_cm;
 		switch (compensate_step)
 		{
 				case 0:
@@ -178,11 +189,13 @@ u8 XY_Compensate_2(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 		move_x_cm = (move_x_cm >= NEUTRAL_ZONE || move_x_cm <= -NEUTRAL_ZONE) ? move_x_cm : 0;
 		s16 move_y_cm = target_y - current_y;
 		move_y_cm = (move_y_cm >= NEUTRAL_ZONE || move_y_cm <= -NEUTRAL_ZONE) ? move_y_cm : 0;
-
+		target_position.x -= move_x_cm;
+		target_position.y -= move_y_cm;
 		switch (compensate_step)
 		{
 				case 0:
 						compensate_step += MoveXY(move_x_cm, move_y_cm, COMPENSATE_VELOCITY);
+						
 						break;
 				case 1:
 						//等3秒
@@ -197,14 +210,117 @@ u8 XY_Compensate_2(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 		}
 		return 0;
 }
-
+//位置补偿1
+u8 Position_Compensate(void)
+{
+		static u8 compensate_step = 0;
+		s16 current_x = position_data.x;
+		s16 current_y = position_data.y;
+		s16 target_x = target_position.x;
+		s16 target_y = target_position.y;
+		s16 move_x_cm = target_x - current_x;
+		s16 move_y_cm = target_y - current_y;
+		target_position.x -= move_x_cm;
+		target_position.y -= move_y_cm;
+		switch (compensate_step)
+		{
+				case 0:
+						if(move_x_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 90);
+						else if(move_x_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
+						else 
+								compensate_step++;
+						break;
+				case 1:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 2:
+						if(move_y_cm >= NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 180);
+						else if(move_y_cm <= -NEUTRAL_ZONE)
+								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
+						else 
+								compensate_step++;
+						break;
+				case 3:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 4:
+						compensate_step = 0;
+						return 1;
+				default:
+						compensate_step = 0;
+						break;
+		}
+		return 0;
+}
+//位置补偿2
+u8 Position_Compensate_2(void)
+{
+		static u8 compensate_step = 0;
+		s16 current_x = position_data.x;
+		s16 current_y = position_data.y;
+		s16 target_x = target_position.x;
+		s16 target_y = target_position.y;
+		s16 move_x_cm = target_x - current_x;
+		move_x_cm = (move_x_cm >= NEUTRAL_ZONE || move_x_cm <= -NEUTRAL_ZONE) ? move_x_cm : 0;
+		s16 move_y_cm = target_y - current_y;
+		move_y_cm = (move_y_cm >= NEUTRAL_ZONE || move_y_cm <= -NEUTRAL_ZONE) ? move_y_cm : 0;
+		target_position.x -= move_x_cm;
+		target_position.y -= move_y_cm;
+		switch (compensate_step)
+		{
+				case 0:
+						compensate_step += MoveXY(move_x_cm, move_y_cm, COMPENSATE_VELOCITY);
+						
+						break;
+				case 1:
+						//等3秒
+						compensate_step += time_dly_cnt(3000);
+						break;
+				case 2:
+						compensate_step = 0;
+						return 1;
+				default:
+						compensate_step = 0;
+						break;
+		}
+		return 0;
+}
 //避障
 u8 Obstacle_Aviod(void)
 {
-		if(lidar_data.min_dis <= 30)
-			return Horizontal_Move_delay(lidar_data.min_dis-30, 10, (lidar_data.min_ang+180)%360, 1000);
-		else 
+	static u8 avoid_step = 0;
+	switch (avoid_step)
+	{
+		case 0:
+			if(lidar_data.min_dis <= 30)
+			{
+				u16 distance_cm = 30-lidar_data.min_dis;
+				u16 velocity_cmps = (lidar_data.min_ang+180)%360;
+				double dx_double = (double)distance_cm * my_cos((double)velocity_cmps);
+				double dy_double = (double)distance_cm * my_sin((double)velocity_cmps);
+				target_position.x -= (u16)dx_double;
+				target_position.y -= (u16)dy_double;
+				avoid_step += Horizontal_Move(distance_cm, 10, velocity_cmps);
+			}
+			else 
+				return 1;
+			break;
+		case 1:
+			avoid_step += time_dly_cnt(3000);
+			break;
+		case 2:
+			avoid_step = 0;
 			return 1;
+		default:
+			avoid_step = 0;
+			break;
+	}
+	return 0;
 }
 
 //一键起飞(高度cm)
@@ -220,6 +336,7 @@ u8 OneKey_Takeoff(u16 height_cm)
 		dt.cmd_send.CMD[2] = BYTE0(height_cm);
 		dt.cmd_send.CMD[3] = BYTE1(height_cm);
 		CMD_Send(0xff, &dt.cmd_send);
+		target_position.h = height_cm;
 		return 1;
 	}
 	else
@@ -238,6 +355,7 @@ u8 OneKey_Land()
 		dt.cmd_send.CMD[0] = 0X00;
 		dt.cmd_send.CMD[1] = 0X06;
 		CMD_Send(0xff, &dt.cmd_send);
+		target_position.h = 0;
 		return 1;
 	}
 	else
@@ -264,6 +382,7 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 		dt.cmd_send.CMD[7] = BYTE1(dir_angle_0_360);
 		//
 		CMD_Send(0xff, &dt.cmd_send);
+		Get_target_position(distance_cm, velocity_cmps);
 		return 1;
 	}
 	else
@@ -309,7 +428,7 @@ u8 MoveXY(s16 x_cm, s16 y_cm, u16 velocity_cmps)
     
     u16 distance_cm = (u16)(distance + 0.5f);
     u16 dir_angle   = (u16)(angle_deg + 0.5f);
-
+		
     return Horizontal_Move(distance_cm, velocity_cmps, dir_angle);
 }
 //平移+延时(距离cm，速度cmps，方向角度0-360度, 延时ms)
@@ -349,6 +468,7 @@ u8 Target_Height(s32 height_cm)
 		dt.cmd_send.CMD[5] = BYTE3(height_cm);
 		//
 		CMD_Send(0xff, &dt.cmd_send);
+		target_position.h = height_cm;
 		return 1;
 	}
 	else

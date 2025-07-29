@@ -3,7 +3,7 @@
 #include "LX_FC_Fun.h"
 
 CircleInfo circle_data = {.x = 80, .y = 60};
-PositionInfo position_data;
+PositionInfo target_position = {.x = 0, .y = 0, .h = 0}, position_data;
 SearchInfo search_data;
 LidarInfo lidar_data;
 

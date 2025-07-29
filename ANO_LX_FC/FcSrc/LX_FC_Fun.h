@@ -23,6 +23,8 @@ u8 Horizontal_Calibrate(void);
 u8 time_dly_cnt(u16 delay_ms);
 u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y);
 u8 XY_Compensate_2(s16 current_x, s16 target_x, s16 current_y, s16 target_y);
+u8 Position_Compensate(void);
+u8 Position_Compensate2(void);
 u8 Obstacle_Aviod(void);
 u8 MoveXY(s16 x_cm, s16 y_cm, u16 velocity_cmps);
 u8 Move_XY_delay(s16 x_cm, s16 y_cm, u16 velocity_cmps, u16 delay_ms);
