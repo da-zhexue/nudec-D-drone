@@ -4,7 +4,7 @@
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\McuConfig.h
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include\stm32f4xx.h
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cm4.h
-.\build\lx_fc_fun.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\lx_fc_fun.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cmInstr.h
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cmFunc.h
 .\build\lx_fc_fun.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cm4_simd.h

@@ -3,7 +3,7 @@
 .\build\main.o: ..\DriversMcu\STM32F407\McuConfig.h
 .\build\main.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\ST\STM32F4xx\Include\stm32f4xx.h
 .\build\main.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cm4.h
-.\build\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\build\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\build\main.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cmInstr.h
 .\build\main.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cmFunc.h
 .\build\main.o: ..\DriversMcu\STM32F407\Libraries\CMSIS\Include\core_cm4_simd.h

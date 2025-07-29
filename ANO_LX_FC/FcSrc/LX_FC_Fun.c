@@ -113,10 +113,10 @@ u8 OneKey_Return_Home()
 }
 
 //获得目标位置
-void Get_target_position(u16 distance_cm, u16 velocity_cmps)
+void Get_target_position(u16 distance_cm, u16 dir_angle_0_360)
 {
-	double dx_double = (double)distance_cm * my_cos((double)velocity_cmps);
-	double dy_double = (double)distance_cm * my_sin((double)velocity_cmps);
+	double dx_double = (double)distance_cm * my_cos((double)dir_angle_0_360);
+	double dy_double = (double)distance_cm * my_sin((double)dir_angle_0_360);
 	target_position.x += (u16)dx_double;
 	target_position.y += (u16)dy_double;
 }
@@ -153,7 +153,7 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 						else if(move_x_cm <= -NEUTRAL_ZONE)
 								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
 						else 
-								compensate_step++;
+								compensate_step=2;
 						break;
 				case 1:
 						//等3秒
@@ -165,7 +165,7 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 						else if(move_y_cm <= -NEUTRAL_ZONE)
 								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
 						else 
-								compensate_step++;
+								compensate_step=4;
 						break;
 				case 3:
 						//等3秒
@@ -220,8 +220,14 @@ u8 Position_Compensate(void)
 		s16 target_y = target_position.y;
 		s16 move_x_cm = target_x - current_x;
 		s16 move_y_cm = target_y - current_y;
+	if(move_x_cm >= NEUTRAL_ZONE||move_x_cm <= -NEUTRAL_ZONE)
+	{
 		target_position.x -= move_x_cm;
+	}
+	if(move_y_cm >= NEUTRAL_ZONE ||move_y_cm <= -NEUTRAL_ZONE)
+	{
 		target_position.y -= move_y_cm;
+	}
 		switch (compensate_step)
 		{
 				case 0:
@@ -230,7 +236,7 @@ u8 Position_Compensate(void)
 						else if(move_x_cm <= -NEUTRAL_ZONE)
 								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
 						else 
-								compensate_step++;
+								compensate_step=2;
 						break;
 				case 1:
 						//等3秒
@@ -242,7 +248,7 @@ u8 Position_Compensate(void)
 						else if(move_y_cm <= -NEUTRAL_ZONE)
 								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
 						else 
-								compensate_step++;
+								compensate_step=4;
 						break;
 				case 3:
 						//等3秒
@@ -300,12 +306,12 @@ u8 Obstacle_Aviod(void)
 			if(lidar_data.min_dis <= 30)
 			{
 				u16 distance_cm = 30-lidar_data.min_dis;
-				u16 velocity_cmps = (lidar_data.min_ang+180)%360;
-				double dx_double = (double)distance_cm * my_cos((double)velocity_cmps);
-				double dy_double = (double)distance_cm * my_sin((double)velocity_cmps);
+				u16 dir_angle_0_360 = (lidar_data.min_ang+180)%360;
+				double dx_double = (double)distance_cm * my_cos((double)dir_angle_0_360);
+				double dy_double = (double)distance_cm * my_sin((double)dir_angle_0_360);
 				target_position.x -= (u16)dx_double;
 				target_position.y -= (u16)dy_double;
-				avoid_step += Horizontal_Move(distance_cm, 10, velocity_cmps);
+				avoid_step += Horizontal_Move(distance_cm, 10, dir_angle_0_360);
 			}
 			else 
 				return 1;
@@ -382,7 +388,7 @@ u8 Horizontal_Move(u16 distance_cm, u16 velocity_cmps, u16 dir_angle_0_360)
 		dt.cmd_send.CMD[7] = BYTE1(dir_angle_0_360);
 		//
 		CMD_Send(0xff, &dt.cmd_send);
-		Get_target_position(distance_cm, velocity_cmps);
+		Get_target_position(distance_cm, dir_angle_0_360);
 		return 1;
 	}
 	else

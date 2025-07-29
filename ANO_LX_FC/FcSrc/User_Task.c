@@ -113,16 +113,17 @@ void UserTask_OneKeyCmd(void)
 				break;
 				case 5:
 				{
-					//等10秒
-					if(time_dly_cnt_ms<10000)
-					{
-						time_dly_cnt_ms+=20;//ms
-					}
-					else
-					{
-						time_dly_cnt_ms = 0;
-						mission_step += 1;
-					}					
+//					//等10秒
+//					if(time_dly_cnt_ms<10000)
+//					{
+//						time_dly_cnt_ms+=20;//ms
+//					}
+//					else
+//					{
+//						time_dly_cnt_ms = 0;
+//						mission_step += 1;
+//					}	
+                   mission_step+=time_dly_cnt(10000);					
 				}
 				break;
 				case 6:
@@ -133,16 +134,7 @@ void UserTask_OneKeyCmd(void)
 				break;	
 				case 7:
 				{
-					//等10秒
-					if(time_dly_cnt_ms<8000)
-					{
-						time_dly_cnt_ms+=20;//ms
-					}
-					else
-					{
-						time_dly_cnt_ms = 0;
-						mission_step += 1;
-					}	
+					 mission_step+=time_dly_cnt(8000);
 				}
 				break;
 				case 8:
@@ -151,71 +143,19 @@ void UserTask_OneKeyCmd(void)
 					mission_step += Horizontal_Move(350, 50, 0);
 				}
 				break;
-				case 9:
+				case 9: 
 				{
 					//等10秒
-					if(time_dly_cnt_ms<10000)
-					{
-						time_dly_cnt_ms+=20;//ms
-					}
-					else
-					{
-						time_dly_cnt_ms = 0;
-						mission_step += 1;
-					}						
+					 mission_step+=time_dly_cnt(10000);	
 				}
 				break;
 				case 10:
-				{
+				{   s16 move_y = circle_data.y - 60;
 					s16 move_x = circle_data.x - 80;
-					if(move_x >= 5)
-						mission_step += Horizontal_Move(move_x, 15, 90);
-					else if(move_x <= -5)
-						mission_step += Horizontal_Move(move_x*(-1), 15, 270);
-					else 
-						mission_step++;
+					mission_step+=XY_Compensate_2(0,move_x,0,move_y);
 				}
-				break;	
+				break;
 				case 11:
-				{
-					//等3秒
-					if(time_dly_cnt_ms<4000)
-					{
-						time_dly_cnt_ms+=20;//ms
-					}
-					else
-					{
-						time_dly_cnt_ms = 0;
-						mission_step += 1;
-					}			
-				}
-				break;
-				case 12:
-				{
-					s16 move_y = circle_data.y - 60;
-					if(move_y >= 5)
-						mission_step += Horizontal_Move(move_y, 15, 180);
-					else if(move_y <= -5)
-						mission_step += Horizontal_Move(move_y*(-1), 15, 0);
-					else 
-						mission_step++;
-				}
-				break;
-				case 13:
-				{
-					//等3秒
-					if(time_dly_cnt_ms<4000)
-					{
-						time_dly_cnt_ms+=20;//ms
-					}
-					else
-					{
-						time_dly_cnt_ms = 0;
-						mission_step += 1;
-					}			
-				}
-				break;
-				case 14:
 				{
 					//执行一键降落
 					OneKey_Land();	
