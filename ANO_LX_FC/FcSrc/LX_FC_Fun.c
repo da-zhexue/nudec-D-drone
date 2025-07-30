@@ -116,7 +116,7 @@ u8 OneKey_Return_Home()
 void Get_target_position(u16 distance_cm, u16 dir_angle_0_360)
 {
 	double dx_double = (double)distance_cm * my_cos((double)dir_angle_0_360);
-	double dy_double = (double)distance_cm * my_sin((double)dir_angle_0_360);
+	double dy_double = (double)distance_cm * (-my_sin((double)dir_angle_0_360));
 	target_position.x += (u16)dx_double;
 	target_position.y += (u16)dy_double;
 }
@@ -149,9 +149,9 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 		{
 				case 0:
 						if(move_x_cm >= NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 90);
+								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 0);
 						else if(move_x_cm <= -NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
+								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 180);
 						else 
 								compensate_step=2;
 						break;
@@ -161,9 +161,9 @@ u8 XY_Compensate(s16 current_x, s16 target_x, s16 current_y, s16 target_y)
 						break;
 				case 2:
 						if(move_y_cm >= NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 180);
+								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 270);
 						else if(move_y_cm <= -NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
+								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 90);
 						else 
 								compensate_step=4;
 						break;
@@ -220,21 +220,21 @@ u8 Position_Compensate(void)
 		s16 target_y = target_position.y;
 		s16 move_x_cm = target_x - current_x;
 		s16 move_y_cm = target_y - current_y;
-	if(move_x_cm >= NEUTRAL_ZONE||move_x_cm <= -NEUTRAL_ZONE)
-	{
-		target_position.x -= move_x_cm;
-	}
-	if(move_y_cm >= NEUTRAL_ZONE ||move_y_cm <= -NEUTRAL_ZONE)
-	{
-		target_position.y -= move_y_cm;
-	}
+		if(move_x_cm >= NEUTRAL_ZONE||move_x_cm <= -NEUTRAL_ZONE)
+		{
+			target_position.x -= move_x_cm;
+		}
+		if(move_y_cm >= NEUTRAL_ZONE ||move_y_cm <= -NEUTRAL_ZONE)
+		{
+			target_position.y -= move_y_cm;
+		}
 		switch (compensate_step)
 		{
 				case 0:
 						if(move_x_cm >= NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 90);
+								compensate_step += Horizontal_Move(move_x_cm, COMPENSATE_VELOCITY, 0);
 						else if(move_x_cm <= -NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 270);
+								compensate_step += Horizontal_Move(move_x_cm*(-1), COMPENSATE_VELOCITY, 180);
 						else 
 								compensate_step=2;
 						break;
@@ -244,9 +244,9 @@ u8 Position_Compensate(void)
 						break;
 				case 2:
 						if(move_y_cm >= NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 180);
+								compensate_step += Horizontal_Move(move_y_cm, COMPENSATE_VELOCITY, 270);
 						else if(move_y_cm <= -NEUTRAL_ZONE)
-								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 0);
+								compensate_step += Horizontal_Move(move_y_cm*(-1), COMPENSATE_VELOCITY, 90);
 						else 
 								compensate_step=4;
 						break;
